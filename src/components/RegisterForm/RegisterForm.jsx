@@ -1,29 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
+// import { useMemo } from "react";
+// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+// import usePlacesAutoComplete, {
+//   getGeocode,
+//   getLatLng,
+// } from "use-places-autocomplete";
+// import {
+//   Combobox,
+//   ComboboxInput,
+//   ComboboxPopover,
+//   ComboboxList,
+//   ComboboxOption
+// } from "@reach/combobox";
+// import "@reach/combobox/styles.css"
+
+import AutoComplete from '../AutoComplete/AutoComplete';
+
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [address, setAddress] = useState('');
   const [game, setGame] = useState('');
   const [noobOrMaster, setNoobOrMaster] = useState('');
   console.log(noobOrMaster);
   const errors = useSelector((store) => store.errors);
   const gamesList = useSelector((store) => store.gamesReducer);
-
+  const address = useSelector((store) => store.addressReducer);
   const dispatch = useDispatch();
 
 
   const registerUser = (event) => {
     event.preventDefault();
-
     dispatch({
       type: 'REGISTER',
       payload: {
         username: username,
         password: password,
-        address: address,
+        address: address.address,
+        lat: address.lat,
+        lng: address.lng,
         game: game, // game id
         noobOrMaster: noobOrMaster
       },
@@ -72,18 +88,7 @@ function RegisterForm() {
         </label>
       </div>
 
-      <div>
-        <label htmlFor="address">
-          Address:
-          <input
-            type="text"
-            name="address"
-            value={address}
-            required
-            onChange={(event) => setAddress(event.target.value)}
-          />
-        </label>
-      </div>
+      <AutoComplete />
 
       <div>
         <label htmlFor="games">Games: </label>
@@ -111,7 +116,7 @@ function RegisterForm() {
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
-      
+
     </form>
   );
 }
