@@ -37,7 +37,7 @@ export default function AutoComplete() {
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div>
-                        <label htmlFor="address">Address: </label>
+                        <label htmlFor="address">Address:</label>
                         <input {...getInputProps({ placeholder: "type address" })} />
 
                         <div>
