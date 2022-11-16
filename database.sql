@@ -19,8 +19,8 @@ CREATE TABLE "users" (
 	"username" VARCHAR (80) UNIQUE NOT NULL,
 	"password" VARCHAR (1000) NOT NULL,
 	"address" varchar(255) NOT NULL,
-	"lat" DECIMAL(10) NOT NULL,
-	"lng" DECIMAL(10) NOT NULL,
+	"lat" DECIMAL(10, 7) NOT NULL,
+	"lng" DECIMAL(10, 7) NOT NULL,
 	"game_id" int NOT NULL REFERENCES games,
 	"noob_or_master" varchar(6) NOT NULL
 	);

@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  console.log(user);
 
   return (
     <div className="nav">
@@ -26,9 +27,10 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <span>hello, {user.username} - {user.noob_or_master}</span>
+            {/* <Link className="navLink" to="/user">
               Home
-            </Link>
+            </Link> */}
 
             <Link className="navLink" to="/info">
               Info Page
