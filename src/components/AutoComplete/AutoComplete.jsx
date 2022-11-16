@@ -49,7 +49,8 @@ export default function AutoComplete() {
                                 };
 
                                 return (
-                                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                                    // z-index so list doesn't push down
+                                    <div key={suggestion.description} {...getSuggestionItemProps(suggestion, { style })}>
                                         {suggestion.description}
                                     </div>
                                 );

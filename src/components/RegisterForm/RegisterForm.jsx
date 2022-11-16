@@ -23,7 +23,6 @@ function RegisterForm() {
   const [password, setPassword] = useState('');
   const [game, setGame] = useState('');
   const [noobOrMaster, setNoobOrMaster] = useState('');
-  console.log(noobOrMaster);
   const errors = useSelector((store) => store.errors);
   const gamesList = useSelector((store) => store.gamesReducer);
   const address = useSelector((store) => store.addressReducer);
