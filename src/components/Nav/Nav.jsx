@@ -38,6 +38,10 @@ function Nav() {
     p: 4,
   };
 
+  function handleModal() {
+
+  }
+
   return (
     <div className="nav">
       {user.noob_or_master === 'noob' &&

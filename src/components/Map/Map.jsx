@@ -13,15 +13,7 @@ const Map = () => {
     console.log(user.lat, user.lng);
     console.log(user.username);
     console.log(mastersList);
-
-    const noob = {
-        name: user.username,
-        game: 'Overwatch',
-        location: {
-            lat: Number(user.lat),
-            lng: Number(user.lng)
-        }
-    };
+    console.log(user.game_id);
 
     useEffect(() => {
         dispatch({
@@ -30,69 +22,19 @@ const Map = () => {
     }, []);
 
     const [selected, setSelected] = useState({});
-    const [center, setCenter] = useState(noob.location);
-
-
+    const [center, setCenter] = useState({ lat: Number(user.lat), lng: Number(user.lng) });
 
     const onSelect = item => {
         setSelected(item);
         setCenter(item.location);
         console.log('setSelected', item);
         console.log('setCenter', item.location);
-    }
-
-
-    const masters = [
-        {
-            name: "Location 1",
-            game: 'Overwatch',
-            location: {
-                lat: 41.3954,
-                lng: 2.162
-            },
-        },
-        {
-            name: "Location 2",
-            game: 'Overwatch',
-            location: {
-                lat: 41.3917,
-                lng: 2.1649
-            },
-        },
-        {
-            name: "Location 3",
-            game: 'Call of Duty',
-            location: {
-                lat: 41.3773,
-                lng: 2.1585
-            },
-        },
-        {
-            name: "Location 4",
-            game: 'Overwatch',
-            location: {
-                lat: 41.3797,
-                lng: 2.1682
-            },
-        },
-        {
-            name: "Location 5",
-            game: 'Call of Duty',
-            location: {
-                lat: 41.4055,
-                lng: 2.1915
-            },
-        }
-    ];
+    };
 
     const mapStyles = {
         height: "70vh",
         width: "80%",
     };
-
-    // const defaultCenter = {
-    //     lat: 41.3851, lng: 2.1734
-    // }
 
     const noobIcon =
         "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
@@ -105,7 +47,7 @@ const Map = () => {
 
     return (
         <>
-            <h1>{user.username}'s Location: lat: {noob.location.lat}, lng: {noob.location.lng}</h1>
+            <h1>{user.username}'s Location: lat: {user.lat}, lng: {user.lng}</h1>
             <LoadScript
                 // import from .env file
                 googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'>
@@ -115,13 +57,13 @@ const Map = () => {
                     zoom={13}
                     center={center}>
 
-                    <Marker key={noob.name} position={noob.location} icon={noobIcon} onClick={() => onSelect(noob)} />
+                    <Marker key={user.username} position={{ lat: Number(user.lat), lng: Number(user.lng) }} icon={noobIcon} onClick={() => onSelect(user)} />
 
                     {
-                        masters.map(master => {
-                            if (master.game === 'Overwatch') {
+                        mastersList.map(master => {
+                            if (master.game_id === 1) {
                                 return (
-                                    <Marker key={master.name} position={master.location} icon={masterIcon} onClick={() => onSelect(master)} />
+                                    <Marker key={master.username} position={{ lat: Number(master.lat), lng: Number(master.lng) }} icon={masterIcon} onClick={() => onSelect(master)} />
                                 )
                             }
                         })
