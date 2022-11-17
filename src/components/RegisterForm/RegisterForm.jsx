@@ -1,19 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useMemo } from "react";
-// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-// import usePlacesAutoComplete, {
-//   getGeocode,
-//   getLatLng,
-// } from "use-places-autocomplete";
-// import {
-//   Combobox,
-//   ComboboxInput,
-//   ComboboxPopover,
-//   ComboboxList,
-//   ComboboxOption
-// } from "@reach/combobox";
-// import "@reach/combobox/styles.css"
 
 import AutoComplete from '../AutoComplete/AutoComplete';
 

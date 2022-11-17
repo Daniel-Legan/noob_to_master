@@ -9,6 +9,9 @@ function UserPage() {
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
+      <p>Your ADDRESS is: {user.address}</p>
+      <p>Your GAME ID is: {user.game_id}</p>
+      <p>Your NOOB OR MASTER is: {user.noob_or_master}</p>
       <LogOutButton className="btn" />
     </div>
   );
