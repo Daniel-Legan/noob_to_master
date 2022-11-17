@@ -15,16 +15,25 @@ import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 
 function Nav() {
+  // drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  // modal login
+  const [openLoginModal, setOpenLoginModal] = React.useState(false);
+  const handleOpenLogin = () => setOpenLoginModal(true);
+  const handleCloseLogin = () => setOpenLoginModal(false);
+
+  // modal register
+  const [openRegisterModal, setOpenRegisterModal] = React.useState(false);
+  const handleOpenRegister = () => setOpenRegisterModal(true);
+  const handleCloseRegister = () => setOpenRegisterModal(false);
+  
   const user = useSelector((store) => store.user);
   const history = useHistory();
 
-  const onLogin = (event) => {
-    console.log('in onLogin');
-  };
+  // const onLogin = (event) => {
+  //   console.log('in onLogin');
+  // };
 
   const style = {
     position: 'absolute',
@@ -37,10 +46,6 @@ function Nav() {
     boxShadow: 24,
     p: 4,
   };
-
-  function handleModal() {
-
-  }
 
   return (
     <div className="nav">
@@ -79,22 +84,36 @@ function Nav() {
         </Button>}
 
       <div>
+        
         {/* If no user is logged in, show these links */}
         {!user.id && (
-          // If there's no user, show login/registration links
-          <Button onClick={handleOpen}>
+          <Button onClick={handleOpenLogin}>
             Login
           </Button>
         )}
 
+        {/* login modal */}
         <Modal
-          open={open}
-          onClose={handleClose}
+          open={openLoginModal}
+          onClose={handleCloseLogin}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <LoginForm />
+            <LoginForm handleCloseLogin={handleCloseLogin} setIsDrawerOpen={setIsDrawerOpen} />
+            <Button onClick={() => { handleCloseLogin(); handleOpenRegister() }}>new user? register</Button>
+          </Box>
+        </Modal>
+
+        {/* register modal */}
+        <Modal
+          open={openRegisterModal}
+          onClose={handleCloseRegister}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <RegisterForm handleCloseRegister={handleCloseRegister} setIsDrawerOpen={setIsDrawerOpen} />
           </Box>
         </Modal>
 

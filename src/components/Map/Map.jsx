@@ -10,10 +10,6 @@ const Map = () => {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
-    console.log(user.lat, user.lng);
-    console.log(user.username);
-    console.log(mastersList);
-    console.log(user.game_id);
 
     useEffect(() => {
         dispatch({
@@ -61,7 +57,7 @@ const Map = () => {
 
                     {
                         mastersList.map(master => {
-                            if (master.game_id === 1) {
+                            if (master.game_id === user.game_id) {
                                 return (
                                     <Marker key={master.username} position={{ lat: Number(master.lat), lng: Number(master.lng) }} icon={masterIcon} onClick={() => onSelect(master)} />
                                 )
