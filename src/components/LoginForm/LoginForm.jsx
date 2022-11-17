@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
-function LoginForm() {
+function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
@@ -18,7 +18,8 @@ function LoginForm() {
 
   const login = (event) => {
     event.preventDefault();
-
+    handleCloseLogin();
+    setIsDrawerOpen();
     if (username && password) {
       dispatch({
         type: 'LOGIN',
@@ -30,7 +31,6 @@ function LoginForm() {
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-    
   }; // end login
 
   const style = {
@@ -80,7 +80,7 @@ function LoginForm() {
         </div>
         <div>
           <input className="btn" type="submit" name="submit" value="Log In" />
-          <Button onClick={handleOpen}>new user? register</Button>
+          {/* <Button onClick={handleOpen}>new user? register</Button> */}
         </div>
       </form>
 

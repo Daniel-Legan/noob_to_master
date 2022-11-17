@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AutoComplete from '../AutoComplete/AutoComplete';
 
 
-function RegisterForm() {
+function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [game, setGame] = useState('');
@@ -17,6 +17,8 @@ function RegisterForm() {
 
   const registerUser = (event) => {
     event.preventDefault();
+    handleCloseRegister();
+    setIsDrawerOpen();
     dispatch({
       type: 'REGISTER',
       payload: {
