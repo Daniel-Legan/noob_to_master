@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './LandingPage.css';
 
 // CUSTOM COMPONENTS
@@ -10,10 +10,17 @@ function LandingPage() {
   const [heading, setHeading] = useState('Welcome');
   const user = useSelector((store) => store.user);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onLogin = (event) => {
     history.push('/login');
   };
+
+  if (user.id) {
+    dispatch({
+      type: 'FETCH_MASTERS' // needs different SQL GET request later
+    });
+  }
 
   return (
     <>

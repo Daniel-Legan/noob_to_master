@@ -17,11 +17,11 @@ const Map = () => {
     const handleOpenRequestModal = () => setOpenRequestModal(true);
     const handleCloseRequestModal = () => setOpenRequestModal(false);
 
-    useEffect(() => {
-        dispatch({
-            type: 'FETCH_MASTERS'
-        });
-    }, []);
+    // useEffect(() => {
+    //     dispatch({
+    //         type: 'FETCH_MASTERS'
+    //     });
+    // }, []);
 
     const [selected, setSelected] = useState({});
     const [newMessage, setNewMessage] = useState('');
