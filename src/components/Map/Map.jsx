@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
 // npm i @react-google-maps/api
 // when connection established, do not let noob see master's location on map
@@ -11,6 +13,10 @@ const Map = () => {
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
 
+    const [openRequestModal, setOpenRequestModal] = React.useState(false);
+    const handleOpenRequestModal = () => setOpenRequestModal(true);
+    const handleCloseRequestModal = () => setOpenRequestModal(false);
+
     useEffect(() => {
         dispatch({
             type: 'FETCH_MASTERS'
@@ -18,14 +24,43 @@ const Map = () => {
     }, []);
 
     const [selected, setSelected] = useState({});
+    const [newMessage, setNewMessage] = useState('');
     const [center, setCenter] = useState({ lat: Number(user.lat), lng: Number(user.lng) });
 
-    const onSelect = item => {
-        setSelected(item);
-        setCenter(item.location);
-        console.log('setSelected', item);
-        console.log('setCenter', item.location);
+    const onSelect = master => {
+        console.log('who is the master?', master);
+        setSelected(
+            {
+                id: master.id,
+                username: master.username,
+                game_id: master.game_id,
+                noob_or_master: master.noob_or_master,
+                lat: Number(master.lat),
+                lng: Number(master.lng)
+            }
+        );
+        setCenter(
+            {
+                lat: Number(master.lat),
+                lng: Number(master.lng)
+            }
+        );
     };
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+
+        dispatch({
+            type: 'ADD_CONNECTION',
+            payload: {
+                noob_id: user.id,
+                master_id: selected.id,
+                noob_message: newMessage,
+            }
+        });
+        handleCloseRequestModal();
+        setNewMessage('');
+    }
 
     const mapStyles = {
         height: "70vh",
@@ -41,9 +76,21 @@ const Map = () => {
     // AIzaSyCzvaWz-QTXbCw05BBOO1bgK-t9I_fhcqs Google Maps API Key -- used index.html
     // AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc Google API key 1
 
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+
     return (
         <>
-            <h1>{user.username}'s Location: lat: {user.lat}, lng: {user.lng}</h1>
+            <h1>{user.username}'s location: lat: {user.lat}, lng: {user.lng}</h1>
             <LoadScript
                 // import from .env file
                 googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'>
@@ -53,35 +100,53 @@ const Map = () => {
                     zoom={13}
                     center={center}>
 
-                    <Marker key={user.username} position={{ lat: Number(user.lat), lng: Number(user.lng) }} icon={noobIcon} onClick={() => onSelect(user)} />
+                    <Marker
+                        key={user.username}
+                        position={{ lat: Number(user.lat), lng: Number(user.lng) }}
+                        icon={noobIcon} />
 
                     {
                         mastersList.map(master => {
                             if (master.game_id === user.game_id) {
                                 return (
-                                    <Marker key={master.username} position={{ lat: Number(master.lat), lng: Number(master.lng) }} icon={masterIcon} onClick={() => onSelect(master)} />
+                                    <Marker
+                                        key={master.username}
+                                        position={{ lat: Number(master.lat), lng: Number(master.lng) }}
+                                        icon={masterIcon}
+                                        onClick={() => { onSelect(master); handleOpenRequestModal() }}
+                                    />
                                 )
                             }
                         })
                     }
 
                     {
-                        selected.location &&
+                        (selected.lat & selected.lng) &&
                         (
-                            <InfoWindow
-                                position={selected.location}
-                                clickable={true}
-                                onCloseClick={() => setSelected({})}
+                            <Modal
+                                open={openRequestModal}
+                                onClose={handleCloseRequestModal}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
                             >
-                                <div>
-                                    <p>name: {(selected.name)}</p>
-                                    <p>lat: ({Number(selected.location.lat)})</p>
-                                    <p>lng: ({Number(selected.location.lng)})</p>
-                                </div>
-                            </InfoWindow>
+                                <Box sx={style} >
+                                    <div>
+                                        {selected.username}: {selected.noob_or_master} - {selected.game_id}
+                                        <form action="" onSubmit={handleSubmit}>
+                                            <input
+                                                type="text"
+                                                name="message"
+                                                required
+                                                value={newMessage}
+                                                onChange={(event) => setNewMessage(event.target.value)}
+                                            />
+                                            <button type="submit">send message</button>
+                                        </form>
+                                    </div>
+                                </Box>
+                            </Modal>
                         )
                     }
-
                 </GoogleMap>
             </LoadScript>
         </>

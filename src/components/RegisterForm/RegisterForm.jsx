@@ -78,6 +78,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
       <AutoComplete />
 
       <div>
+        {/* use MUI component for Games: */}
         <label htmlFor="games">Games: </label>
         <select
           onChange={(event) => setGame(event.target.value)}
