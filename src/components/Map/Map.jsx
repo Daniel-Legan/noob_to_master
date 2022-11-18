@@ -12,25 +12,29 @@ const Map = () => {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
+    // console.log('MASTER LIST', mastersList);
+    // console.log('CURRENT USER', user);
+
 
     const [openRequestModal, setOpenRequestModal] = React.useState(false);
     const handleOpenRequestModal = () => setOpenRequestModal(true);
     const handleCloseRequestModal = () => setOpenRequestModal(false);
 
-    // useEffect(() => {
-    //     dispatch({
-    //         type: 'FETCH_MASTERS'
-    //     });
-    // }, []);
-
     const [selected, setSelected] = useState({});
     const [newMessage, setNewMessage] = useState('');
     const [center, setCenter] = useState({ lat: Number(user.lat), lng: Number(user.lng) });
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_MASTERS'
+        });
+    }, []);
 
     const onSelect = master => {
         setSelected(
             {
                 id: master.id,
+                title: master.title,
                 username: master.username,
                 game_id: master.game_id,
                 noob_or_master: master.noob_or_master,
@@ -86,13 +90,14 @@ const Map = () => {
         boxShadow: 24,
         p: 4,
     };
-
+    // console.log('SELECTED', selected);
     return (
         <>
             <h1>{user.username}'s location: lat: {user.lat}, lng: {user.lng}</h1>
             <LoadScript
                 // import from .env file
-                googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'>
+                googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'
+            >
 
                 <GoogleMap
                     mapContainerStyle={mapStyles}
@@ -130,7 +135,7 @@ const Map = () => {
                             >
                                 <Box sx={style} >
                                     <div>
-                                        {selected.username}: ({selected.noob_or_master}) game id: {selected.game_id}
+                                        {selected.username}: ({selected.noob_or_master}) game title: {selected.title}
                                         <form onSubmit={handleSubmit}>
                                             <input
                                                 type="text"

@@ -12,9 +12,9 @@ function LandingPage() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const onLogin = (event) => {
-    history.push('/login');
-  };
+  // const onLogin = (event) => {
+  //   history.push('/login');
+  // };
 
   if (user.id) {
     dispatch({
