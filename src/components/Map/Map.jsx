@@ -28,7 +28,6 @@ const Map = () => {
     const [center, setCenter] = useState({ lat: Number(user.lat), lng: Number(user.lng) });
 
     const onSelect = master => {
-        console.log('who is the master?', master);
         setSelected(
             {
                 id: master.id,
@@ -131,8 +130,8 @@ const Map = () => {
                             >
                                 <Box sx={style} >
                                     <div>
-                                        {selected.username}: {selected.noob_or_master} - {selected.game_id}
-                                        <form action="" onSubmit={handleSubmit}>
+                                        {selected.username}: ({selected.noob_or_master}) game id: {selected.game_id}
+                                        <form onSubmit={handleSubmit}>
                                             <input
                                                 type="text"
                                                 name="message"
