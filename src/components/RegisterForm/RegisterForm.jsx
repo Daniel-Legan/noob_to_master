@@ -25,8 +25,8 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
         username: username,
         password: password,
         address: address.address,
-        lat: address.lat,
-        lng: address.lng,
+        lat: Number(address.lat),
+        lng: Number(address.lng),
         game: game, // game id
         noobOrMaster: noobOrMaster
       },
@@ -78,6 +78,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
       <AutoComplete />
 
       <div>
+        {/* use MUI component for Games: */}
         <label htmlFor="games">Games: </label>
         <select
           onChange={(event) => setGame(event.target.value)}

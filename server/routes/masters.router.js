@@ -4,11 +4,11 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     // return masters
-    const queryText = `SELECT 
-                        username, lat, lng, game_id, noob_or_master 
-                        FROM users
-                        WHERE noob_or_master = 'master';
-                        `;
+    const queryText = `
+                    SELECT username, lat, lng, noob_or_master, title, game_id, users.id
+                    FROM users
+                    JOIN games ON users.game_id = games.id
+                    WHERE noob_or_master = 'master';`;
     pool
         .query(queryText)
         .then((result) => {

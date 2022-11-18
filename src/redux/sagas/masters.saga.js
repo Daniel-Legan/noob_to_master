@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchMasters() {
-    console.log('here'); // yes
+
     const response = yield axios.get(`/api/masters`);
 
     yield put({
