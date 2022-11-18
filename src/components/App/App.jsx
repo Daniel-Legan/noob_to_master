@@ -20,6 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Map from '../Map/Map';
+import RequestsPage from '../RequestsPage/RequestsPage';
+import InvitesPage from '../InvitesPage/InvitesPage';
 
 import './App.css';
 
@@ -76,6 +78,22 @@ function App() {
             path="/map"
           >
             <Map />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+
+            exact
+            path="/requests"
+          >
+            <RequestsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+
+            exact
+            path="/invites"
+          >
+            <InvitesPage />
           </ProtectedRoute>
 
           {/* <Route
