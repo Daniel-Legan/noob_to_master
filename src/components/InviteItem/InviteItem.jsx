@@ -3,98 +3,117 @@ import { useDispatch } from 'react-redux';
 // FOR THE MASTER
 function InviteItem({ invite }) {
 
-
-    console.log(invite);
-
     const dispatch = useDispatch();
 
     switch (invite.status) {
-        case 'cancelled':
-            return (
-                <>
-                    <li>
-                        Noob ID: {invite.noob_id} <br />
-                        Username: {invite.noob_username} <br />
-                        Game: {invite.title} <br />
-                        Noob or Master: {invite.noob_or_master} <br />
-                        Message: {invite.noob_message} <br />
-                        Status: {invite.status} <br />
-                        Connection ID: {invite.id} <br />
-                        INVITE CANCELLED
-                    </li>
-                    <button onClick={() => {
-                        dispatch({
-                            type: 'UPDATE_CLEAR_MASTER',
-                            payload: invite.id // connection id
-                        })
-                    }}>clear</button>
-                </>);
         case 'pending':
             return (
                 <>
                     <li>
-                        Noob ID: {invite.noob_id} <br />
+                        NOOB ID: {invite.master_id} <br />
                         Username: {invite.noob_username} <br />
                         Game: {invite.title} <br />
-                        Noob or Master: {invite.noob_or_master} <br />
                         Message: {invite.noob_message} <br />
+                        Noob or Master: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
                         Connection ID: {invite.id}
                     </li>
-                    <button>accept</button>
-                    <button>reject</button>
+                    <button onClick={() => {
+                        dispatch({
+                            type: 'UPDATE_STATUS',
+                            payload: {
+                                id: invite.id,
+                                newStatus: 'accepted'
+                            }
+                        })
+                    }}>accept</button>
+                    <button onClick={() => {
+                        dispatch({
+                            type: 'UPDATE_STATUS',
+                            payload: {
+                                id: invite.id,
+                                newStatus: 'rejected'
+                            }
+                        })
+                    }}>reject</button>
                 </>
             );
-        case 'cleared': // TODO: master_cleared AND noob_cleared for status states!
+        case 'cancelled':
+            return (
+                <>
+                    <li>
+                        Noob ID: {invite.master_id} <br />
+                        Username: {invite.noob_username} <br />
+                        Game: {invite.title} <br />
+                        Message: {invite.noob_message} <br />
+                        Noob or Master: {invite.noob_or_master} <br />
+                        Status: {invite.status} <br />
+                        Connection ID: {invite.id} <br />
+                        <button onClick={() => {
+                            dispatch({
+                                type: 'DELETE_CONNECTION',
+                                payload: invite.id
+                            })
+                        }}>delete</button>
+                    </li>
+                </>
+            );
+        case 'rejected':
             return (
                 <></>
+            );
+        case 'accepted':
+            return (
+                <>
+                    <li>
+                        Noob ID: {invite.master_id} <br />
+                        Username: {invite.noob_username} <br />
+                        Game: {invite.title} <br />
+                        Message: {invite.noob_message} <br />
+                        Noob or Master: {invite.noob_or_master} <br />
+                        Status: {invite.status} <br />
+                        Phone: {invite.phone} <br />
+                        Connection ID: {invite.id} <br />
+                        <button onClick={() => {
+                            dispatch({
+                                type: 'UPDATE_STATUS',
+                                payload: {
+                                    id: invite.id,
+                                    newStatus: 'master_cleared'
+                                }
+                            })
+                        }}>clear</button>
+                    </li>
+                </>
+            );
+        case 'master_cleared':
+            return (
+                <></>
+            );
+        case 'noob_cleared':
+            return (
+                <>
+                    <li>
+                        Noob ID: {invite.master_id} <br />
+                        Username: {invite.noob_username} <br />
+                        Game: {invite.title} <br />
+                        Message: {invite.noob_message} <br />
+                        Noob or Master: {invite.noob_or_master} <br />
+                        Status: {invite.status} <br />
+                        Phone: {invite.phone} <br />
+                        Connection ID: {invite.id} <br />
+                        <button onClick={() => {
+                            dispatch({
+                                type: 'DELETE_CONNECTION',
+                                payload: invite.id
+                            })
+                        }}>delete</button>
+                    </li>
+                </>
             );
         default:
             <></>
     }
-
-    // if (invite.status === 'cancelled') {
-    //     return (
-    // <>
-    //     <li>
-    //         Noob ID: {invite.noob_id} <br />
-    //         Username: {invite.noob_username} <br />
-    //         Game: {invite.title} <br />
-    //         Noob or Master: {invite.noob_or_master} <br />
-    //         Message: {invite.noob_message} <br />
-    //         Status: {invite.status} <br />
-    //         Connection ID: {invite.id} <br />
-    //         INVITE CANCELLED
-    //     </li>
-    //     <button onClick={() => {
-    //         dispatch({
-    //             type: 'UPDATE_CLEAR_MASTER',
-    //             payload: invite.id // connection id
-    //         })
-    //     }}>clear</button>
-    // </>
-    //     );
-    // } else if (invite.status === 'pending') {
-    //     return (
-    //         <>
-    //             <li>
-    //                 Noob ID: {invite.noob_id} <br />
-    //                 Username: {invite.noob_username} <br />
-    //                 Game: {invite.title} <br />
-    //                 Noob or Master: {invite.noob_or_master} <br />
-    //                 Message: {invite.noob_message} <br />
-    //                 Status: {invite.status} <br />
-    //                 Connection ID: {invite.id}
-    //             </li>
-    //             <button>accept</button>
-    //             <button>reject</button>
-    //         </>
-    //     );
-    // } else if (invite.is_cleared_by_master === true) {
-    //     return (
-    //         <></>
-    //     );
-    // }
 }
 
 export default InviteItem;

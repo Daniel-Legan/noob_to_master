@@ -7,6 +7,8 @@ import mastersSaga from './masters.saga';
 import connectionsSaga from './connections.saga';
 import invitesSaga from './invites.saga';
 import requestsSaga from './requests.saga';
+import status from './status.saga';
+import deleteSaga from './delete.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -24,6 +26,8 @@ export default function* rootSaga() {
     mastersSaga(),
     connectionsSaga(),
     invitesSaga(),
-    requestsSaga()
+    requestsSaga(),
+    status(),
+    deleteSaga()
   ]);
 }

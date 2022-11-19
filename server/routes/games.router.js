@@ -8,7 +8,7 @@ const {
 
 router.get('/', (req, res) => {
     // return all games
-    const queryText = `SELECT * FROM games ORDER BY title ASC`;
+    const queryText = `SELECT * FROM games ORDER BY title ASC;`;
     pool
         .query(queryText)
         .then((result) => {

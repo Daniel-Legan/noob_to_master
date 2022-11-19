@@ -4,35 +4,99 @@ import { useDispatch, useSelector } from 'react-redux';
 function RequestItem({ request }) {
 
     const dispatch = useDispatch();
-    // const requests = useSelector(store => store.requestsReducer);
 
-    // console.log(requests);
 
-    if (request.status === 'pending') {
-        return (
-            <>
+    switch (request.status) {
+        case 'pending':
+            return (
+                <>
+                    <li>
+                        Master ID: {request.master_id} <br />
+                        Username: {request.master_username} <br />
+                        Game: {request.title} <br />
+                        Noob or Master: {request.noob_or_master} <br />
+                        Status: {request.status} <br />
+                        Connection ID: {request.id}
+                    </li>
+                    <button onClick={() => {
+                        dispatch({
+                            type: 'UPDATE_STATUS',
+                            payload: {
+                                id: request.id,
+                                newStatus: 'cancelled'
+                            }
+                        })
+                    }}>cancel</button>
+                </>
+            );
+        case 'cancelled':
+            return (
+                <></>
+            );
+        case 'rejected':
+            return (
                 <li>
                     Master ID: {request.master_id} <br />
                     Username: {request.master_username} <br />
                     Game: {request.title} <br />
                     Noob or Master: {request.noob_or_master} <br />
-                    Message(null by default): {request.master_message} <br />
                     Status: {request.status} <br />
-                    Connection ID: {request.id}
+                    Connection ID: {request.id} <br />
+                    <button onClick={() => {
+                        dispatch({
+                            type: 'DELETE_CONNECTION',
+                            payload: request.id
+                        })
+                    }}>delete</button>
                 </li>
-                <button onClick={() => {
-                    dispatch({
-                        type: 'UPDATE_CANCEL_NOOB',
-                        payload: request.id // connection id
-                    })
-                }}>cancel</button>
-            </>
-        )
-    } else {
-        return (
-            <>
-            </>
-        );
+            );
+        case 'accepted':
+            return (
+                <>
+                    <li>
+                        Master ID: {request.master_id} <br />
+                        Username: {request.master_username} <br />
+                        Game: {request.title} <br />
+                        Noob or Master: {request.noob_or_master} <br />
+                        Status: {request.status} <br />
+                        Phone: {request.phone} <br />
+                        Connection ID: {request.id} <br />
+                        <button onClick={() => {
+                            dispatch({
+                                type: 'UPDATE_STATUS',
+                                payload: {
+                                    id: request.id,
+                                    newStatus: 'noob_cleared'
+                                }
+                            })
+                        }}>clear</button>
+                    </li>
+                </>
+            );
+        case 'master_cleared':
+            return (
+                <li>
+                    Master ID: {request.master_id} <br />
+                    Username: {request.master_username} <br />
+                    Game: {request.title} <br />
+                    Noob or Master: {request.noob_or_master} <br />
+                    Status: {request.status} <br />
+                    Phone: {request.phone} <br />
+                    Connection ID: {request.id} <br />
+                    <button onClick={() => {
+                        dispatch({
+                            type: 'DELETE_CONNECTION',
+                            payload: request.id
+                        })
+                    }}>delete</button>
+                </li>
+            );
+        case 'noob_cleared':
+            return (
+                <></>
+            );
+        default:
+            <></>
     }
 }
 
