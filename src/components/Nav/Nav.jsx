@@ -27,7 +27,7 @@ function Nav() {
   const [openRegisterModal, setOpenRegisterModal] = React.useState(false);
   const handleOpenRegister = () => setOpenRegisterModal(true);
   const handleCloseRegister = () => setOpenRegisterModal(false);
-  
+
   const user = useSelector((store) => store.user);
   const history = useHistory();
 
@@ -59,8 +59,8 @@ function Nav() {
           DASHBOARD
           <Button onClick={() => { history.push('/home') }}>home</Button>
           <Button>profile</Button>
-          <Button>requests</Button>
-          <Button onClick={() => {history.push('/map')}}>find master</Button>
+          <Button onClick={() => { history.push('/requests') }}>requests</Button>
+          <Button onClick={() => { history.push('/map') }}>find master</Button>
           <LogOutButton className="navLink" />
         </Drawer>}
 
@@ -74,7 +74,7 @@ function Nav() {
           DASHBOARD
           <Button onClick={() => { history.push('/home') }}>home</Button>
           <Button>profile</Button>
-          <Button>invites</Button>
+          <Button onClick={() => { history.push('/invites') }}>invites</Button>
           <LogOutButton className="navLink" />
         </Drawer>}
 
@@ -84,7 +84,7 @@ function Nav() {
         </Button>}
 
       <div>
-        
+
         {/* If no user is logged in, show these links */}
         {!user.id && (
           <Button onClick={handleOpenLogin}>

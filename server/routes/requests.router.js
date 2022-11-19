@@ -6,14 +6,17 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    // return masters
+    // console.log(req.user.id);
+    // return requests
     const queryText = `
-                    SELECT username, lat, lng, noob_or_master, title, game_id, users.id
-                    FROM users
-                    JOIN games ON users.game_id = games.id
-                    WHERE noob_or_master = 'master';`;
+                        SELECT connections.id, master_id, master_message, status, is_cleared_by_noob, is_cleared_by_master, username AS master_username, title
+                        FROM connections
+                        JOIN users ON connections.master_id = users.id
+                        JOIN games ON users.game_id = games.id
+                        WHERE noob_id = $1
+                    `;
     pool
-        .query(queryText)
+        .query(queryText, [req.user.id])
         .then((result) => {
             res.send(result.rows);
         })
