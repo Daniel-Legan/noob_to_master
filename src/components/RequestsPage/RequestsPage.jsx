@@ -11,14 +11,17 @@ function RequestsPage() {
             type: 'FETCH_REQUESTS'
         });
     }, []);
+    console.log(requests);
     return (
-        <ul>
-            {requests.map((request) => {
-                return (
+        <>
+            <h1>REQUESTS PAGE</h1>
+            <ul>
+                {requests.map(request =>
                     <RequestItem key={request.id} request={request} />
-                );
-            })}
-        </ul>
+                    // come back to address ID issue
+                )}
+            </ul>
+        </>
     );
 }
 

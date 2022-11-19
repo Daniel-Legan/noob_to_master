@@ -11,8 +11,16 @@ function* fetchInvites() {
     });
 }
 
+function* updateClearMaster(action) {
+    yield axios.put(`/api/invites/${action.payload}`);
+    yield put({
+        type: 'FETCH_INVITES',
+    });
+}
+
 function* invitesSaga() {
     yield takeLatest('FETCH_INVITES', fetchInvites);
+    yield takeLatest('UPDATE_CLEAR_MASTER', updateClearMaster);
 }
 
 export default invitesSaga;
