@@ -6,7 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/', (req, res) => {
     // return all games
     const queryText = `SELECT * FROM games ORDER BY title ASC`;
     pool
