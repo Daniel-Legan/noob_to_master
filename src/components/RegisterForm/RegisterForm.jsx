@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import MuiPhoneNumber from 'material-ui-phone-number';
 import AutoComplete from '../AutoComplete/AutoComplete';
 
 
 function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
   const [game, setGame] = useState('');
   const [noobOrMaster, setNoobOrMaster] = useState('');
   const errors = useSelector((store) => store.errors);
@@ -25,6 +26,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
         username: username,
         password: password,
         address: address.address,
+        phone: phone,
         lat: Number(address.lat),
         lng: Number(address.lng),
         game: game, // game id
@@ -38,6 +40,10 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
       type: 'FETCH_GAMES'
     });
   }, []);
+
+  function handleOnChange(value) {
+    setPhone(value);
+  }
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
@@ -74,6 +80,8 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
           />
         </label>
       </div>
+
+      <MuiPhoneNumber required defaultCountry={'us'} onChange={handleOnChange} />
 
       <AutoComplete />
 

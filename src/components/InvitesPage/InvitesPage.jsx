@@ -12,13 +12,15 @@ function InvitesPage() {
         });
     }, []);
     return (
-        <ul>
-            {invites.map((invite) => {
-                return (
+        <>
+            <h1>INVITES PAGE</h1>
+            <ul>
+                {invites.map(invite =>
                     <InviteItem key={invite.id} invite={invite} />
-                );
-            })}
-        </ul>
+                )}
+            </ul>
+        </>
+
     );
 }
 

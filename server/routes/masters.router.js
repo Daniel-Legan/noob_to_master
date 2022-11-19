@@ -8,10 +8,11 @@ const {
 router.get('/', rejectUnauthenticated, (req, res) => {
     // return masters
     const queryText = `
-                    SELECT username, lat, lng, noob_or_master, title, game_id, users.id
-                    FROM users
-                    JOIN games ON users.game_id = games.id
-                    WHERE noob_or_master = 'master';`;
+                        SELECT username, lat, lng, noob_or_master, title, game_id, users.id
+                        FROM users
+                        JOIN games ON users.game_id = games.id
+                        WHERE noob_or_master = 'master';
+                    `;
     pool
         .query(queryText)
         .then((result) => {

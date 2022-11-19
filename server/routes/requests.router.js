@@ -6,14 +6,14 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    // console.log(req.user.id);
     // return requests
     const queryText = `
-                        SELECT connections.id, master_id, master_message, status, is_cleared_by_noob, is_cleared_by_master, username AS master_username, title
+                        SELECT connections.id, master_id, phone, status, username AS master_username, title, noob_or_master
                         FROM connections
                         JOIN users ON connections.master_id = users.id
                         JOIN games ON users.game_id = games.id
                         WHERE noob_id = $1
+                        ORDER BY connections.id;
                     `;
     pool
         .query(queryText, [req.user.id])

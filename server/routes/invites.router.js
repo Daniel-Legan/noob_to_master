@@ -9,11 +9,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     // console.log(req.user.id);
     // return invites
     const queryText = `
-                        SELECT connections.id, noob_id, noob_message, master_message, status, is_cleared_by_noob, is_cleared_by_master, username AS noob_username, title
+                        SELECT connections.id, noob_id, phone, noob_message, status, username AS noob_username, title, noob_or_master
                         FROM connections
                         JOIN users ON connections.noob_id = users.id
                         JOIN games ON users.game_id = games.id
-                        WHERE master_id = $1;
+                        WHERE master_id = $1
+                        ORDER BY connections.id;
                     `;
     pool
         .query(queryText, [req.user.id])
