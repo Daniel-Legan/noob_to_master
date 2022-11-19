@@ -13,6 +13,7 @@ const gamesRouter = require('./routes/games.router');
 const mastersRouter = require('./routes/masters.router');
 const connectionsRouter = require('./routes/connections.router');
 const invitesRouter = require('./routes/invites.router');
+const requestsRouter = require('./routes/requests.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use('/api/games', gamesRouter);
 app.use('/api/masters', mastersRouter);
 app.use('/api/connections', connectionsRouter);
 app.use('/api/invites', invitesRouter);
+app.use('/api/requests', requestsRouter);
 
 // Serve static files
 app.use(express.static('build'));

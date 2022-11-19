@@ -5,6 +5,7 @@ import gamesReducer from './games.reducer';
 import addressReducer from './address.reducer';
 import mastersReducer from './masters.reducer';
 import invitesReducer from './invites.reducer';
+import requestsReducer from './requests.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   gamesReducer,
   addressReducer,
   mastersReducer,
-  invitesReducer
+  invitesReducer,
+  requestsReducer
 });
 
 export default rootReducer;

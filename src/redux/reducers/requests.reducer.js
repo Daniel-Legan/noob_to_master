@@ -1,4 +1,4 @@
-const invitesReducer = (state = [], action) => {
+const requestsReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_REQUESTS':
             return action.payload;
@@ -7,4 +7,4 @@ const invitesReducer = (state = [], action) => {
     }
 };
 
-export default invitesReducer;
+export default requestsReducer;
