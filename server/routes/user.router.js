@@ -27,14 +27,6 @@ router.post('/register', (req, res, next) => {
   const game_id = req.body.game;
   const phone = req.body.phone;
   const noob_or_master = req.body.noobOrMaster;
-  console.log('the username is', username);
-  console.log('the password is', password);
-  console.log('the address is', address);
-  console.log('the phone is', phone);
-  console.log('the lat is', lat);
-  console.log('the lng is', lng);
-  console.log('the game_id is', game_id);
-  console.log('the noob_or_master is', noob_or_master);
 
   const queryText = `
                       INSERT INTO "users" (username, password, address, phone, lat, lng, game_id, noob_or_master)
