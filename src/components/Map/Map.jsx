@@ -13,10 +13,10 @@ const Map = () => {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
-    const connectionsList = useSelector((store) => store.connectionsReducer);
-    console.log('connectionsList', connectionsList);
-    console.log('masterList', mastersList);
-    console.log('user', user);
+    // const connectionsList = useSelector((store) => store.connectionsReducer);
+    // console.log('connectionsList', connectionsList);
+    // console.log('masterList', mastersList);
+    // console.log('user', user);
 
     const [openRequestModal, setOpenRequestModal] = React.useState(false);
     const handleOpenRequestModal = () => setOpenRequestModal(true);
@@ -28,24 +28,10 @@ const Map = () => {
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_MASTERS'
-        });
-        dispatch({
-            type: 'FETCH_CONNECTIONS'
+            type: 'FETCH_MASTERS',
+            payload: user.id
         });
     }, []);
-
-    // testing logic
-    let arrayToRender = []; // not correct
-    for (let master of mastersList) {
-        for (let connection of connectionsList) {
-            // console.log(connection.noob_id);
-            if (connection.noob_id != user.id && connection.master_id != master.id) {
-                arrayToRender.push(master);
-            }
-        }
-    }
-    console.log('arrayToRender', arrayToRender);
 
     const onSelect = master => {
         setSelected(
@@ -78,6 +64,7 @@ const Map = () => {
                 noob_message: newMessage,
             }
         });
+
         handleCloseRequestModal();
         Swal.fire(
             'Success!',
@@ -85,6 +72,11 @@ const Map = () => {
             'success'
         )
         setNewMessage('');
+
+        dispatch({
+            type: 'FETCH_MASTERS',
+            payload: user.id
+        });
     }
 
     const mapStyles = {
@@ -118,59 +110,60 @@ const Map = () => {
                 googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'
             > */}
 
-                <GoogleMap
-                    mapContainerStyle={mapStyles}
-                    zoom={13}
-                    center={center}>
+            <GoogleMap
+                mapContainerStyle={mapStyles}
+                zoom={13}
+                center={center}>
 
-                    <Marker
-                        key={user.username}
-                        position={{ lat: Number(user.lat), lng: Number(user.lng) }}
-                        icon={noobIcon} />
+                <Marker
+                    key={user.username}
+                    position={{ lat: Number(user.lat), lng: Number(user.lng) }}
+                    icon={noobIcon} />
 
-                    {
-                        mastersList.map(master => {
-                            if (master.game_id === user.game_id) {
-                                return (
-                                    <Marker
-                                        key={master.username}
-                                        position={{ lat: Number(master.lat), lng: Number(master.lng) }}
-                                        icon={masterIcon}
-                                        onClick={() => { onSelect(master); handleOpenRequestModal() }}
-                                    />
-                                )
-                            }
-                        })
-                    }
+                {
+                    mastersList.map(master => {
+                        if (master.game_id === user.game_id) {
+                            return (
+                                <Marker
+                                    key={master.username}
+                                    position={{ lat: Number(master.lat), lng: Number(master.lng) }}
+                                    icon={masterIcon}
+                                    onClick={() => { onSelect(master); handleOpenRequestModal() }}
+                                />
+                            )
+                        }
+                    })
+                }
 
-                    {
-                        (selected.lat & selected.lng) &&
-                        (
-                            <Modal
-                                open={openRequestModal}
-                                onClose={handleCloseRequestModal}
-                                aria-labelledby="modal-modal-title"
-                                aria-describedby="modal-modal-description"
-                            >
-                                <Box sx={style} >
-                                    <div>
-                                        {selected.username}: ({selected.noob_or_master}) game title: {selected.title}
-                                        <form onSubmit={handleSubmit}>
-                                            <input
-                                                type="text"
-                                                name="message"
-                                                required
-                                                value={newMessage}
-                                                onChange={(event) => setNewMessage(event.target.value)}
-                                            />
-                                            <button type="submit">send message</button>
-                                        </form>
-                                    </div>
-                                </Box>
-                            </Modal>
-                        )
-                    }
-                </GoogleMap>
+                {
+                    (selected.lat & selected.lng) &&
+                    (
+                        <Modal
+                            open={openRequestModal}
+                            onClose={handleCloseRequestModal}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box sx={style} >
+                                <div>
+                                    {selected.username}: ({selected.noob_or_master}) game title: {selected.title}
+                                    <form onSubmit={handleSubmit}>
+                                        <input
+                                            type="text"
+                                            name="message"
+                                            required
+                                            value={newMessage}
+                                            onChange={(event) => setNewMessage(event.target.value)}
+                                        />
+                                        <button type="submit">send message</button>
+                                        {/* enter/return sometimes works, button press sometimes works */}
+                                    </form>
+                                </div>
+                            </Box>
+                        </Modal>
+                    )
+                }
+            </GoogleMap>
             {/* </LoadScript> */}
         </>
     )
