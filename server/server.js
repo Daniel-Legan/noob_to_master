@@ -16,6 +16,7 @@ const invitesRouter = require('./routes/invites.router');
 const requestsRouter = require('./routes/requests.router');
 const statusRouter = require('./routes/status.router');
 const deleteRouter = require('./routes/delete.router');
+const fetchConnections = require('./routes/fetchConnections.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use('/api/invites', invitesRouter);
 app.use('/api/requests', requestsRouter);
 app.use('/api/status', statusRouter);
 app.use('/api/delete', deleteRouter);
+app.use('/api/fetchConnections', fetchConnections);
 
 // Serve static files
 app.use(express.static('build'));

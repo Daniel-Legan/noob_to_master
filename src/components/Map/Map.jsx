@@ -13,9 +13,10 @@ const Map = () => {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
-    // console.log('MASTER LIST', mastersList);
-    // console.log('CURRENT USER', user);
-
+    const connectionsList = useSelector((store) => store.connectionsReducer);
+    console.log('connectionsList', connectionsList);
+    console.log('masterList', mastersList);
+    console.log('user', user);
 
     const [openRequestModal, setOpenRequestModal] = React.useState(false);
     const handleOpenRequestModal = () => setOpenRequestModal(true);
@@ -29,7 +30,22 @@ const Map = () => {
         dispatch({
             type: 'FETCH_MASTERS'
         });
+        dispatch({
+            type: 'FETCH_CONNECTIONS'
+        });
     }, []);
+
+    // testing logic
+    let arrayToRender = []; // not correct
+    for (let master of mastersList) {
+        for (let connection of connectionsList) {
+            // console.log(connection.noob_id);
+            if (connection.noob_id != user.id && connection.master_id != master.id) {
+                arrayToRender.push(master);
+            }
+        }
+    }
+    console.log('arrayToRender', arrayToRender);
 
     const onSelect = master => {
         setSelected(
@@ -81,9 +97,6 @@ const Map = () => {
 
     const masterIcon =
         "http://maps.google.com/mapfiles/ms/icons/red.png";
-
-    // AIzaSyCzvaWz-QTXbCw05BBOO1bgK-t9I_fhcqs Google Maps API Key -- used index.html
-    // AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc Google API key 1
 
     const style = {
         position: 'absolute',

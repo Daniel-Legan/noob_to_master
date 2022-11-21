@@ -9,6 +9,7 @@ import invitesSaga from './invites.saga';
 import requestsSaga from './requests.saga';
 import status from './status.saga';
 import deleteSaga from './delete.saga';
+import fetchConnections from './fetchConnections.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -28,6 +29,7 @@ export default function* rootSaga() {
     invitesSaga(),
     requestsSaga(),
     status(),
-    deleteSaga()
+    deleteSaga(),
+    fetchConnections()
   ]);
 }

@@ -10,8 +10,8 @@ function* addConnection(action) {
     }
 }
 
-function* addConnectionSaga() {
+function* connectionsSaga() {
     yield takeEvery('ADD_CONNECTION', addConnection);
 }
 
-export default addConnectionSaga;
+export default connectionsSaga;
