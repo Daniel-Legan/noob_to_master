@@ -85,6 +85,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
 
       <label htmlFor="phone">
         Phone:
+        {/* make phone number required */}
         <MuiPhoneNumber required defaultCountry={'us'} onChange={handleOnChange} />
       </label>
 
