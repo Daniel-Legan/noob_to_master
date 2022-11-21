@@ -100,10 +100,10 @@ const Map = () => {
     return (
         <>
             <h1>{user.username}'s location: lat: {user.lat}, lng: {user.lng}</h1>
-            <LoadScript
+            {/* <LoadScript
                 // import from .env file
                 googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'
-            >
+            > */}
 
                 <GoogleMap
                     mapContainerStyle={mapStyles}
@@ -158,7 +158,7 @@ const Map = () => {
                         )
                     }
                 </GoogleMap>
-            </LoadScript>
+            {/* </LoadScript> */}
         </>
     )
 }
