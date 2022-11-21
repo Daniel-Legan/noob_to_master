@@ -91,6 +91,7 @@ function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          {/* app crashes do to PlacesAutoComplete not loading in error logs */}
           <RegisterForm />
         </Box>
       </Modal>
