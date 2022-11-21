@@ -64,13 +64,13 @@ function App() {
 
           </ProtectedRoute> */}
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
 
             exact
             path="/info"
           >
             <LandingPage />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <ProtectedRoute
 
