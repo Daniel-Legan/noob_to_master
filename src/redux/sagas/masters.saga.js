@@ -1,10 +1,8 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* fetchMasters(action) {
-    const noobId = action.payload;
-    console.log(noobId);
-    const response = yield axios.get(`/api/masters/${noobId}`);
+function* fetchMasters() {
+    const response = yield axios.get(`/api/masters/`);
 
     yield put({
         type: 'SET_MASTERS',

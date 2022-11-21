@@ -13,8 +13,6 @@ const Map = () => {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
-    // const connectionsList = useSelector((store) => store.connectionsReducer);
-    // console.log('connectionsList', connectionsList);
     // console.log('masterList', mastersList);
     // console.log('user', user);
 
@@ -28,8 +26,7 @@ const Map = () => {
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_MASTERS',
-            payload: user.id
+            type: 'FETCH_MASTERS'
         });
     }, []);
 
@@ -66,16 +63,17 @@ const Map = () => {
         });
 
         handleCloseRequestModal();
+
         Swal.fire(
             'Success!',
             `your message was sent to ${selected.username}`,
             'success'
         )
+
         setNewMessage('');
 
         dispatch({
-            type: 'FETCH_MASTERS',
-            payload: user.id
+            type: 'FETCH_MASTERS'
         });
     }
 
