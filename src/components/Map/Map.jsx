@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import Swal from 'sweetalert2'
 
 // npm i @react-google-maps/api
 // when connection established, do not let noob see master's location on map
@@ -62,6 +63,11 @@ const Map = () => {
             }
         });
         handleCloseRequestModal();
+        Swal.fire(
+            'Success!',
+            `your message was sent to ${selected.username}`,
+            'success'
+        )
         setNewMessage('');
     }
 
