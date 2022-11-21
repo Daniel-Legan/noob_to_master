@@ -9,17 +9,20 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     // return masters
     const queryText = `
                         SELECT 
-                            masters.id,
-                            masters.username,
-                            masters.lat,
-                            masters.lng,
-                            masters.game_id,
-                            masters.noob_or_master
+                            masters.id, 
+                            masters.username, 
+                            masters.lat, 
+                            masters.lng, 
+                            masters.game_id, 
+                            masters.noob_or_master, 
+                            games.title
                         FROM users masters
+                        JOIN games
+                            ON masters.game_id = games.id
                         LEFT JOIN connections
                             ON connections.master_id = masters.id
                         WHERE masters.noob_or_master = 'master'
-                        GROUP BY masters.id
+                        GROUP BY masters.id, games.title
                         HAVING count(connections.id) FILTER (WHERE noob_id = $1) = 0;
                     `;
     pool
