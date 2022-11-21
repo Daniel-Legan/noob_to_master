@@ -20,7 +20,7 @@ function Nav() {
 
   // modal login
   const [openLoginModal, setOpenLoginModal] = React.useState(false);
-  const handleOpenLogin = () => setOpenLoginModal(true);
+  const handleOpenLogin = () => { setOpenLoginModal(true); setIsDrawerOpen(false) }
   const handleCloseLogin = () => setOpenLoginModal(false);
 
   // modal register
@@ -57,11 +57,14 @@ function Nav() {
           onClose={() => setIsDrawerOpen(false)}
         >
           DASHBOARD
-          <Button onClick={() => { history.push('/home') }}>home</Button>
+          <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
           <Button>profile</Button>
-          <Button onClick={() => { history.push('/requests') }}>requests</Button>
-          <Button onClick={() => { history.push('/map') }}>find master</Button>
-          <LogOutButton className="navLink" />
+          <Button onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
+          <Button onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
+          <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+            About
+          </Button>
+          <LogOutButton setIsDrawerOpen={setIsDrawerOpen} />
         </Drawer>}
 
       {user.noob_or_master === 'master' &&
@@ -72,10 +75,13 @@ function Nav() {
           onClose={() => setIsDrawerOpen(false)}
         >
           DASHBOARD
-          <Button onClick={() => { history.push('/home') }}>home</Button>
+          <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
           <Button>profile</Button>
-          <Button onClick={() => { history.push('/invites') }}>invites</Button>
-          <LogOutButton className="navLink" />
+          <Button onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
+          <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+            About
+          </Button>
+          <LogOutButton setIsDrawerOpen={setIsDrawerOpen} />
         </Drawer>}
 
       {user.id &&
@@ -87,9 +93,27 @@ function Nav() {
 
         {/* If no user is logged in, show these links */}
         {!user.id && (
-          <Button onClick={handleOpenLogin}>
-            Login
-          </Button>
+          <>
+            <Button onClick={() => setIsDrawerOpen(true)}>
+              <h2 className="nav-title">☰</h2>
+            </Button>
+            <Drawer
+              anchor='left'
+              open={isDrawerOpen}
+              // called when clicking outside the drawer
+              onClose={() => setIsDrawerOpen(false)}
+            >
+              DASHBOARD
+              <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+              <Button onClick={handleOpenLogin}>
+                Login
+              </Button>
+              <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+                About
+              </Button>
+            </Drawer>
+          </>
+
         )}
 
         {/* login modal */}
@@ -134,9 +158,7 @@ function Nav() {
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link>
+
       </div>
     </div>
   );

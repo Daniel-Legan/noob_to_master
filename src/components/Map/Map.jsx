@@ -73,7 +73,7 @@ const Map = () => {
 
     const mapStyles = {
         height: "70vh",
-        width: "80%",
+        width: "100%"
     };
 
     const noobIcon =
