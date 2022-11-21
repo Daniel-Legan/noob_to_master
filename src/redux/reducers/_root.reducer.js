@@ -7,6 +7,7 @@ import mastersReducer from './masters.reducer';
 import invitesReducer from './invites.reducer';
 import requestsReducer from './requests.reducer';
 
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -20,7 +21,7 @@ const rootReducer = combineReducers({
   addressReducer,
   mastersReducer,
   invitesReducer,
-  requestsReducer
+  requestsReducer,
 });
 
 export default rootReducer;

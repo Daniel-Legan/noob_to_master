@@ -16,11 +16,11 @@ function LandingPage() {
   //   history.push('/login');
   // };
 
-  if (user.id) {
-    dispatch({
-      type: 'FETCH_MASTERS' // needs different SQL GET request later
-    });
-  }
+  // if (user.id) {
+  //   dispatch({
+  //     type: 'FETCH_MASTERS' // needs different SQL GET request later
+  //   });
+  // }
 
   return (
     <>

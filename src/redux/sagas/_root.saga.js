@@ -28,6 +28,6 @@ export default function* rootSaga() {
     invitesSaga(),
     requestsSaga(),
     status(),
-    deleteSaga()
+    deleteSaga(),
   ]);
 }

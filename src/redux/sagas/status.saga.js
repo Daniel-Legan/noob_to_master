@@ -11,6 +11,7 @@ function* updateStatus(action) {
     yield put({
         type: 'FETCH_REQUESTS',
     });
+    
     yield put({
         type: 'FETCH_INVITES',
     });
