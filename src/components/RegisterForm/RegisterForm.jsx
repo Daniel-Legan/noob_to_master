@@ -29,7 +29,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
         phone: phone,
         lat: Number(address.lat),
         lng: Number(address.lng),
-        game: game, // game id
+        game: game, // game_id
         noobOrMaster: noobOrMaster
       },
     });
@@ -81,18 +81,23 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
         </label>
       </div>
 
-      <MuiPhoneNumber required defaultCountry={'us'} onChange={handleOnChange} />
-
       <AutoComplete />
+
+      <label htmlFor="phone">
+        Phone:
+        <MuiPhoneNumber required defaultCountry={'us'} onChange={handleOnChange} />
+      </label>
 
       <div>
         {/* use MUI component for Games: */}
-        <label htmlFor="games">Games: </label>
+        {/* remove space after Game: */}
+        <label htmlFor="games">Game: </label>
         <select
           onChange={(event) => setGame(event.target.value)}
           value={game}
+          required
         >
-          <option value="" disabled>select a game</option>
+          <option value="" disabled>select game</option>
           {gamesList.map(game => (
             <option key={game.id} value={game.id}>{game.title}</option>
           ))}
@@ -101,12 +106,12 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
 
       <div className="radio-box">
         <input value={noobOrMaster} type="radio" name="question" id="noob" onChange={() => setNoobOrMaster('noob')} required />
-        <label htmlFor="two">noob</label>
+        <label htmlFor="noobOrMaster">noob</label>
       </div>
 
       <div className="radio-box">
         <input type="radio" name="question" id="master" onChange={() => setNoobOrMaster('master')} required />
-        <label htmlFor="two">master</label>
+        <label htmlFor="noobOrMaster">master</label>
       </div>
 
       <div>

@@ -33,18 +33,18 @@ export default function AutoComplete() {
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div>
                         <label htmlFor="address">Address:</label>
-                        <input {...getInputProps({ placeholder: "type address" })} />
+                        <input required {...getInputProps()} />
+                        {/* <input required {...getInputProps({ placeholder: "type address" })} /> */}
 
-                        <div>
+                        <div className="placesAutoCompleteContainer">
                             {loading ? <div>...loading</div> : null}
 
                             {suggestions.map(suggestion => {
                                 const style = {
-                                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
+                                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
                                 };
 
                                 return (
-                                    // z-index so list doesn't push down
                                     <div key={suggestion.description} {...getSuggestionItemProps(suggestion, { style })}>
                                         {suggestion.description}
                                     </div>
