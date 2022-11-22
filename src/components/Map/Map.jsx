@@ -70,8 +70,6 @@ const Map = () => {
             'success'
         )
 
-        setNewMessage('');
-
         dispatch({
             type: 'FETCH_MASTERS'
         });
@@ -102,7 +100,6 @@ const Map = () => {
     // console.log('SELECTED', selected);
     return (
         <>
-            <h1>{user.username}'s location: lat: {user.lat}, lng: {user.lng}</h1>
             {/* <LoadScript
                 // import from .env file
                 googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'
@@ -154,7 +151,6 @@ const Map = () => {
                                             onChange={(event) => setNewMessage(event.target.value)}
                                         />
                                         <button type="submit">send message</button>
-                                        {/* enter/return sometimes works, button press sometimes works */}
                                     </form>
                                 </div>
                             </Box>

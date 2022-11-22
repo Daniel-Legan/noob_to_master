@@ -18,8 +18,10 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
 
   const sqlText = `
-                    SELECT * FROM users 
-                    WHERE id = $1
+                    SELECT *
+                    FROM users 
+                    JOIN games ON users.game_id = games.id
+                    WHERE users.id = $1;
                   `;
   const sqlParams = [id];
   pool.query(sqlText, sqlParams)
@@ -32,12 +34,12 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.put('/:id', rejectUnauthenticated, (req, res) => {
-  // Update this single user
-  const idToUpdate = req.params.id;
+router.put('/', rejectUnauthenticated, (req, res) => {
+  console.log('game id', req.body.game_id);
+  console.log('user id', req.user.id);
 
   const sqlText = `UPDATE users SET game_id = $1, noob_or_master = $2 WHERE id = $3`;
-  pool.query(sqlText, [req.body.game_id, req.body.noob_or_master, idToUpdate])
+  pool.query(sqlText, [req.body.game_id, req.body.noob_or_master, req.user.id])
     .then((result) => {
       res.sendStatus(200);
     })

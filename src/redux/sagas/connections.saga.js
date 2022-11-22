@@ -6,7 +6,7 @@ function* addConnection(action) {
         yield axios.post('/api/connections', action.payload)
 
     } catch (error) {
-        console.log('error in connections saga', error);
+        console.log(error);
     }
 }
 

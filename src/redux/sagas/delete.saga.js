@@ -5,7 +5,7 @@ function* deleteConnection(action) {
     try {
         yield axios.delete(`/api/delete/${action.payload}`)
     } catch (error) {
-        console.log('error in delete SAGA', error);
+        console.log(error);
     }
     yield put({
         type: 'FETCH_REQUESTS'

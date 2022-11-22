@@ -31,10 +31,6 @@ function Nav() {
   const user = useSelector((store) => store.user);
   const history = useHistory();
 
-  // const onLogin = (event) => {
-  //   console.log('in onLogin');
-  // };
-
   const style = {
     position: 'absolute',
     top: '50%',
@@ -145,7 +141,7 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <span>hello, {user.username} - {user.noob_or_master}</span>
+            <span>hello, {user.username} ({user.game_title}) - {user.noob_or_master}</span>
             {/* <Link className="navLink" to="/user">
               Home
             </Link> */}

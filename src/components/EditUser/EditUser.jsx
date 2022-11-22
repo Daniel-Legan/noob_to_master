@@ -17,8 +17,7 @@ function EditUser() {
     useEffect(() => {
         if (params.id) {
             dispatch({
-                type: 'FETCH_EDIT_USER',
-                payload: params.id
+                type: 'FETCH_EDIT_USER'
             });
 
             dispatch({
@@ -79,7 +78,8 @@ function EditUser() {
                         ))}
                     </select>
                 </div>
-                Switch to role: {user.noob_or_master}
+                Switch to role: {user.noob_or_master} <br></br>
+                Switch to role: {user.game_title}
                 <div className="radio-box">
                     <input
                         type="radio"

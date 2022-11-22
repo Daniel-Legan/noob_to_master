@@ -2,7 +2,6 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchGames() {
-
     const response = yield axios.get(`/api/games`);
 
     yield put({
