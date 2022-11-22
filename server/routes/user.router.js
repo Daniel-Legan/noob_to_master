@@ -14,6 +14,39 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+  const id = req.params.id;
+
+  const sqlText = `
+                    SELECT * FROM users 
+                    WHERE id = $1
+                  `;
+  const sqlParams = [id];
+  pool.query(sqlText, sqlParams)
+    .then((result) => {
+      res.send(result.rows[0]);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  // Update this single user
+  const idToUpdate = req.params.id;
+
+  const sqlText = `UPDATE users SET game_id = $1, noob_or_master = $2 WHERE id = $3`;
+  pool.query(sqlText, [req.body.game_id, req.body.noob_or_master, idToUpdate])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted

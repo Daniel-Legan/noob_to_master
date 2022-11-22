@@ -10,7 +10,7 @@ function InviteItem({ invite }) {
             return (
                 <>
                     <li>
-                        NOOB ID: {invite.master_id} <br />
+                        NOOB ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
                         Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />
@@ -42,7 +42,7 @@ function InviteItem({ invite }) {
             return (
                 <>
                     <li>
-                        Noob ID: {invite.master_id} <br />
+                        Noob ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
                         Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />
@@ -66,7 +66,7 @@ function InviteItem({ invite }) {
             return (
                 <>
                     <li>
-                        Noob ID: {invite.master_id} <br />
+                        Noob ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
                         Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />
@@ -94,7 +94,7 @@ function InviteItem({ invite }) {
             return (
                 <>
                     <li>
-                        Noob ID: {invite.master_id} <br />
+                        Noob ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
                         Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />

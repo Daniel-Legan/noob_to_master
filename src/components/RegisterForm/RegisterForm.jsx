@@ -106,7 +106,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
       </div>
 
       <div className="radio-box">
-        <input value={noobOrMaster} type="radio" name="question" id="noob" onChange={() => setNoobOrMaster('noob')} required />
+        <input type="radio" name="question" id="noob" onChange={() => setNoobOrMaster('noob')} required />
         <label htmlFor="noobOrMaster">noob</label>
       </div>
 

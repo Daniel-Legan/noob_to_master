@@ -9,7 +9,25 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <p>Noob-to-Master was built with the following technologies/languages:</p>
+        <ul>
+          <li>Google Maps JavaScript API</li>
+          <li>Google Places API</li>
+          <li>JavaScript</li>
+          <li>React-Saga</li>
+          <li>React-Redux</li>
+          <li>React</li>
+          <li>Node</li>
+          <li>Express</li>
+          <li>Material-UI</li>
+          <li>Git</li>
+          <li>Git-Hub</li>
+          <li>Axios</li>
+          <li>SQL</li>
+          <li>Postgres</li>
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
       </div>
     </div>
   );

@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Map from '../Map/Map';
 import RequestsPage from '../RequestsPage/RequestsPage';
 import InvitesPage from '../InvitesPage/InvitesPage';
+import EditUser from '../EditUser/EditUser';
 
 import './App.css';
 
@@ -94,6 +95,14 @@ function App() {
             path="/invites"
           >
             <InvitesPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+
+            exact
+            path="/edit/:id"
+          >
+            <EditUser />
           </ProtectedRoute>
 
           {/* <Route
