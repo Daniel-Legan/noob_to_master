@@ -54,7 +54,7 @@ function Nav() {
         >
           DASHBOARD
           <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>profile</Button>
+          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and/or role</Button>
           <Button onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
           <Button onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
           <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
@@ -72,7 +72,7 @@ function Nav() {
         >
           DASHBOARD
           <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>profile</Button>
+          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and/or role</Button>
           <Button onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
           <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
             About

@@ -37,7 +37,7 @@ function EditUser() {
     return (
         <>
             <form className="formPanel" >
-                <h2>Profile</h2>
+                <h2>Game and/or Role</h2>
 
                 {/* <div>
                     <label htmlFor="username">
@@ -70,7 +70,6 @@ function EditUser() {
                             payload: { game_id: evt.target.value }
                         })}
                         value={user.game_id}
-                        required
                     >
                         <option value="" disabled>select game</option>
                         {gamesList.map(game => (
@@ -78,14 +77,11 @@ function EditUser() {
                         ))}
                     </select>
                 </div>
-                Switch to role: {user.noob_or_master} <br></br>
-                Switch to role: {user.game_title}
                 <div className="radio-box">
                     <input
                         type="radio"
                         name="question"
                         id="noob"
-                        required
                         onChange={() => dispatch({ type: 'UPDATE_EDIT_USER', payload: { noob_or_master: 'noob' } })}
                     />
                     <label htmlFor="noobOrMaster">noob</label>
@@ -96,7 +92,6 @@ function EditUser() {
                         type="radio"
                         name="question"
                         id="master"
-                        required
                         onChange={() => dispatch({ type: 'UPDATE_EDIT_USER', payload: { noob_or_master: 'master' } })}
                     />
                     <label htmlFor="noobOrMaster">master</label>
