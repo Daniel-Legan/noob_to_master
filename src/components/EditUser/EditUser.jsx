@@ -34,10 +34,26 @@ function EditUser() {
         });
     }
 
+    function noob() {
+        if (user.noob_or_master === 'noob') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function master() {
+        if (user.noob_or_master === 'master') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return (
         <>
             <form className="formPanel" >
-                <h2>Game and/or Role</h2>
+                <h2>Game and Role</h2>
 
                 {/* <div>
                     <label htmlFor="username">
@@ -82,6 +98,7 @@ function EditUser() {
                         type="radio"
                         name="question"
                         id="noob"
+                        checked={noob()}
                         onChange={() => dispatch({ type: 'UPDATE_EDIT_USER', payload: { noob_or_master: 'noob' } })}
                     />
                     <label htmlFor="noobOrMaster">noob</label>
@@ -92,6 +109,7 @@ function EditUser() {
                         type="radio"
                         name="question"
                         id="master"
+                        checked={master()}
                         onChange={() => dispatch({ type: 'UPDATE_EDIT_USER', payload: { noob_or_master: 'master' } })}
                     />
                     <label htmlFor="noobOrMaster">master</label>
