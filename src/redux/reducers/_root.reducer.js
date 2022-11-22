@@ -6,6 +6,7 @@ import addressReducer from './address.reducer';
 import mastersReducer from './masters.reducer';
 import invitesReducer from './invites.reducer';
 import requestsReducer from './requests.reducer';
+import editUser from './editUser';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   mastersReducer,
   invitesReducer,
   requestsReducer,
+  editUser
 });
 
 export default rootReducer;
