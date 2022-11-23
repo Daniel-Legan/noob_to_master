@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Swal from 'sweetalert2'
+import TextField from '@mui/material/TextField';
 
 // npm i @react-google-maps/api
 // when connection established, do not let noob see master's location on map
@@ -13,8 +15,6 @@ const Map = () => {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
-    // console.log('masterList', mastersList);
-    // console.log('user', user);
 
     const [openRequestModal, setOpenRequestModal] = React.useState(false);
     const handleOpenRequestModal = () => setOpenRequestModal(true);
@@ -99,14 +99,9 @@ const Map = () => {
         boxShadow: 24,
         p: 4,
     };
-    console.log('SELECTED', selected);
+
     return (
         <>
-            {/* <LoadScript
-                // import from .env file
-                googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'
-            > */}
-
             <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={13}
@@ -143,17 +138,33 @@ const Map = () => {
                         >
                             <Box sx={style} >
                                 <div>
-                                    <img className="game_logo" src={selected.games_logo}/>
-                                    {selected.username}: ({selected.noob_or_master}) game title: {selected.title}
+                                    <img className="games_logo" src={selected.games_logo} />
+                                    {selected.username} ({selected.noob_or_master}) game: <b>{selected.title}</b> 
                                     <form onSubmit={handleSubmit}>
-                                        <input
+                                        {/* <input
                                             type="text"
                                             name="message"
                                             required
                                             value={newMessage}
                                             onChange={(event) => setNewMessage(event.target.value)}
-                                        />
-                                        <button type="submit">send message</button>
+                                        /> */}
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            sx={{ marginRight: "50px" }}
+                                            value={newMessage}
+                                            onChange={(event) => setNewMessage(event.target.value)}
+                                            id="outlined-basic" label="type message"
+                                            variant="outlined" />
+                                        <Box textAlign={'right'}>
+                                            <Button
+                                                variant="contained"
+                                                type="submit"
+                                            >
+                                                send message
+                                            </Button>
+                                        </Box>
+
                                     </form>
                                 </div>
                             </Box>
@@ -161,7 +172,6 @@ const Map = () => {
                     )
                 }
             </GoogleMap>
-            {/* </LoadScript> */}
         </>
     )
 }

@@ -2,7 +2,6 @@
 import Drawer from '@mui/material/Drawer';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import * as React from 'react';
@@ -13,12 +12,17 @@ import Modal from '@mui/material/Modal';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
+import Avatar from '@mui/material/Avatar';
+import { Paper } from '@mui/material';
+
 
 function Nav() {
+  const dispatch = useDispatch();
   // drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -32,9 +36,14 @@ function Nav() {
   const handleOpenRegister = () => setOpenRegisterModal(true);
   const handleCloseRegister = () => setOpenRegisterModal(false);
 
+  const handleOnClick = () => {
+    dispatch({ type: 'LOGOUT' })
+    history.push('/home');
+    setIsDrawerOpen();
+  };
+
   const user = useSelector((store) => store.user);
   const history = useHistory();
-  console.log(user);
 
   const style = {
     position: 'absolute',
@@ -48,6 +57,10 @@ function Nav() {
     p: 4,
   };
 
+  const buttonStyles = {
+    color: 'white'
+  }
+
   return (
     <nav>
       {user.noob_or_master === 'noob' &&
@@ -56,18 +69,21 @@ function Nav() {
           open={isDrawerOpen}
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
+          PaperProps={{
+            sx: { width: "20%", background: 'black' }
+          }}
         >
-          <Typography align="center">
-            dashboard
+          <Typography align="center" color={'white'} variant="h6">
+            DASHBOARD
           </Typography>
-          <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
-          <Button onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
-          <Button onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
-          <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
             About
           </Button>
-          <LogOutButton setIsDrawerOpen={setIsDrawerOpen} />
+          <Button sx={{ color: 'white' }} onClick={handleOnClick}>logout</Button>
         </Drawer>}
 
       {user.noob_or_master === 'master' &&
@@ -76,17 +92,20 @@ function Nav() {
           open={isDrawerOpen}
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
+          PaperProps={{
+            sx: { width: "20%", background: 'black' }
+          }}
         >
-          <Typography align="center">
-            dashboard
+          <Typography align="center" color={'white'} variant="h6">
+            DASHBOARD
           </Typography>
-          <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
-          <Button onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
-          <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
             About
           </Button>
-          <LogOutButton setIsDrawerOpen={setIsDrawerOpen} />
+          <Button sx={buttonStyles} onClick={handleOnClick}>logout</Button>
         </Drawer>}
 
       {!user.id && (
@@ -96,15 +115,18 @@ function Nav() {
             open={isDrawerOpen}
             // called when clicking outside the drawer
             onClose={() => setIsDrawerOpen(false)}
+            PaperProps={{
+              sx: { width: "20%", background: 'black' }
+            }}
           >
-            <Typography align="center">
-              dashboard
+            <Typography align="center" color={'white'} variant="h6">
+              DASHBOARD
             </Typography>
-            <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-            <Button onClick={handleOpenLogin}>
+            <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+            <Button sx={buttonStyles} onClick={handleOpenLogin}>
               Login
             </Button>
-            <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+            <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
               About
             </Button>
           </Drawer>
