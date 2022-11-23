@@ -31,6 +31,7 @@ const Map = () => {
     }, []);
 
     const onSelect = master => {
+        console.log(master);
         setSelected(
             {
                 id: master.id,
@@ -38,6 +39,7 @@ const Map = () => {
                 username: master.username,
                 game_id: master.game_id,
                 noob_or_master: master.noob_or_master,
+                games_logo: master.games_logo,
                 lat: Number(master.lat),
                 lng: Number(master.lng)
             }
@@ -97,7 +99,7 @@ const Map = () => {
         boxShadow: 24,
         p: 4,
     };
-    // console.log('SELECTED', selected);
+    console.log('SELECTED', selected);
     return (
         <>
             {/* <LoadScript
@@ -141,6 +143,7 @@ const Map = () => {
                         >
                             <Box sx={style} >
                                 <div>
+                                    <img className="game_logo" src={selected.games_logo}/>
                                     {selected.username}: ({selected.noob_or_master}) game title: {selected.title}
                                     <form onSubmit={handleSubmit}>
                                         <input

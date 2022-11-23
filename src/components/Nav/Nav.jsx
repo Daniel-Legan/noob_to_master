@@ -30,6 +30,7 @@ function Nav() {
 
   const user = useSelector((store) => store.user);
   const history = useHistory();
+  console.log(user);
 
   const style = {
     position: 'absolute',
@@ -141,6 +142,7 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
+            <img className="games_logo" src={user.game_logo} />
             <span>hello, {user.username} ({user.game_title}) - {user.noob_or_master}</span>
             {/* <Link className="navLink" to="/user">
               Home

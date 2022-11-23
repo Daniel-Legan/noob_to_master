@@ -10,7 +10,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   pool
     .query(`
-            SELECT users.*, games.title as game_title
+            SELECT users.*, games.title as game_title, games.logo as game_logo
             FROM users 
             JOIN games ON users.game_id = games.id
             WHERE users.id = $1;

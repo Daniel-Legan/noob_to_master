@@ -10,6 +10,7 @@ function RequestItem({ request }) {
         case 'pending':
             return (
                 <>
+                    <img className="games_logo" src={request.games_logo} />
                     <li>
                         Master ID: {request.master_id} <br />
                         Username: {request.master_username} <br />
@@ -35,24 +36,28 @@ function RequestItem({ request }) {
             );
         case 'rejected':
             return (
-                <li>
-                    Master ID: {request.master_id} <br />
-                    Username: {request.master_username} <br />
-                    Game: {request.title} <br />
-                    Noob or Master: {request.noob_or_master} <br />
-                    Status: {request.status} <br />
-                    Connection ID: {request.id} <br />
-                    <button onClick={() => {
-                        dispatch({
-                            type: 'DELETE_CONNECTION',
-                            payload: request.id
-                        })
-                    }}>delete</button>
-                </li>
+                <>
+                    <img className="games_logo" src={request.games_logo} />
+                    <li>
+                        Master ID: {request.master_id} <br />
+                        Username: {request.master_username} <br />
+                        Game: {request.title} <br />
+                        Noob or Master: {request.noob_or_master} <br />
+                        Status: {request.status} <br />
+                        Connection ID: {request.id} <br />
+                        <button onClick={() => {
+                            dispatch({
+                                type: 'DELETE_CONNECTION',
+                                payload: request.id
+                            })
+                        }}>delete</button>
+                    </li>
+                </>
             );
         case 'accepted':
             return (
                 <>
+                    <img className="games_logo" src={request.games_logo} />
                     <li>
                         Master ID: {request.master_id} <br />
                         Username: {request.master_username} <br />
@@ -75,21 +80,24 @@ function RequestItem({ request }) {
             );
         case 'master_cleared':
             return (
-                <li>
-                    Master ID: {request.master_id} <br />
-                    Username: {request.master_username} <br />
-                    Game: {request.title} <br />
-                    Noob or Master: {request.noob_or_master} <br />
-                    Status: {request.status} <br />
-                    Phone: {request.phone} <br />
-                    Connection ID: {request.id} <br />
-                    <button onClick={() => {
-                        dispatch({
-                            type: 'DELETE_CONNECTION',
-                            payload: request.id
-                        })
-                    }}>delete</button>
-                </li>
+                <>
+                    <img className="games_logo" src={request.games_logo} />
+                    <li>
+                        Master ID: {request.master_id} <br />
+                        Username: {request.master_username} <br />
+                        Game: {request.title} <br />
+                        Noob or Master: {request.noob_or_master} <br />
+                        Status: {request.status} <br />
+                        Phone: {request.phone} <br />
+                        Connection ID: {request.id} <br />
+                        <button onClick={() => {
+                            dispatch({
+                                type: 'DELETE_CONNECTION',
+                                payload: request.id
+                            })
+                        }}>delete</button>
+                    </li>
+                </>
             );
         case 'noob_cleared':
             return (
