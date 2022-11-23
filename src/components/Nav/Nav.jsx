@@ -13,6 +13,10 @@ import Modal from '@mui/material/Modal';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
 
 function Nav() {
   // drawer
@@ -45,7 +49,7 @@ function Nav() {
   };
 
   return (
-    <div className="nav">
+    <nav>
       {user.noob_or_master === 'noob' &&
         <Drawer
           anchor='left'
@@ -53,7 +57,9 @@ function Nav() {
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
         >
-          DASHBOARD
+          <Typography align="center">
+            dashboard
+          </Typography>
           <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
           <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
           <Button onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
@@ -71,7 +77,9 @@ function Nav() {
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
         >
-          DASHBOARD
+          <Typography align="center">
+            dashboard
+          </Typography>
           <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
           <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
           <Button onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
@@ -81,84 +89,81 @@ function Nav() {
           <LogOutButton setIsDrawerOpen={setIsDrawerOpen} />
         </Drawer>}
 
-      {user.id &&
-        <Button onClick={() => setIsDrawerOpen(true)}>
-          <h2 className="nav-title">☰</h2>
-        </Button>}
-
-      <div>
-
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          <>
-            <Button onClick={() => setIsDrawerOpen(true)}>
-              <h2 className="nav-title">☰</h2>
+      {!user.id && (
+        <>
+          <Drawer
+            anchor='left'
+            open={isDrawerOpen}
+            // called when clicking outside the drawer
+            onClose={() => setIsDrawerOpen(false)}
+          >
+            <Typography align="center">
+              dashboard
+            </Typography>
+            <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+            <Button onClick={handleOpenLogin}>
+              Login
             </Button>
-            <Drawer
-              anchor='left'
-              open={isDrawerOpen}
-              // called when clicking outside the drawer
-              onClose={() => setIsDrawerOpen(false)}
+            <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+              About
+            </Button>
+          </Drawer>
+        </>
+      )}
+
+      {/* login modal */}
+      <Modal
+        open={openLoginModal}
+        onClose={handleCloseLogin}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <LoginForm handleCloseLogin={handleCloseLogin} setIsDrawerOpen={setIsDrawerOpen} />
+          <Button onClick={() => { handleCloseLogin(); handleOpenRegister() }}>new user? register</Button>
+        </Box>
+      </Modal>
+
+      {/* register modal */}
+      <Modal
+        open={openRegisterModal}
+        onClose={handleCloseRegister}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <RegisterForm handleCloseRegister={handleCloseRegister} setIsDrawerOpen={setIsDrawerOpen} />
+        </Box>
+      </Modal>
+
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              onClick={() => setIsDrawerOpen(true)}
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
             >
-              DASHBOARD
-              <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-              <Button onClick={handleOpenLogin}>
-                Login
-              </Button>
-              <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
-                About
-              </Button>
-            </Drawer>
-          </>
-
-        )}
-
-        {/* login modal */}
-        <Modal
-          open={openLoginModal}
-          onClose={handleCloseLogin}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <LoginForm handleCloseLogin={handleCloseLogin} setIsDrawerOpen={setIsDrawerOpen} />
-            <Button onClick={() => { handleCloseLogin(); handleOpenRegister() }}>new user? register</Button>
-          </Box>
-        </Modal>
-
-        {/* register modal */}
-        <Modal
-          open={openRegisterModal}
-          onClose={handleCloseRegister}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <RegisterForm handleCloseRegister={handleCloseRegister} setIsDrawerOpen={setIsDrawerOpen} />
-          </Box>
-        </Modal>
-
-
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <img className="games_logo" src={user.game_logo} />
-            <span>hello, {user.username} ({user.game_title}) - {user.noob_or_master}</span>
-            {/* <Link className="navLink" to="/user">
-              Home
-            </Link> */}
-
-            {/* <Link className="navLink" to="/info">
-              Info Page
-            </Link> */}
-
-            {/* <LogOutButton className="navLink" /> */}
-          </>
-        )}
-
-
-      </div>
-    </div>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Noob-to-Master
+            </Typography>
+            <Typography>
+              {user.id && (
+                <>
+                  <img className="games_logo" src={user.game_logo} />
+                  <span>hello, {user.username} ({user.noob_or_master})</span>
+                </>
+              )}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </nav>
   );
 }
 
