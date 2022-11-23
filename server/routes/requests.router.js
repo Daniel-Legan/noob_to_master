@@ -8,7 +8,15 @@ const {
 router.get('/', rejectUnauthenticated, (req, res) => {
     // return requests
     const queryText = `
-                        SELECT connections.id, master_id, phone, status, username AS master_username, title, noob_or_master
+                        SELECT 
+                            connections.id, 
+                            master_id, 
+                            phone, 
+                            status, 
+                            username AS master_username, 
+                            title, 
+                            noob_or_master, 
+                            games.logo AS games_logo
                         FROM connections
                         JOIN users ON connections.master_id = users.id
                         JOIN games ON users.game_id = games.id

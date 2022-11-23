@@ -9,6 +9,7 @@ function InviteItem({ invite }) {
         case 'pending':
             return (
                 <>
+                    <img className="games_logo" src={invite.games_logo} />
                     <li>
                         NOOB ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
@@ -41,6 +42,7 @@ function InviteItem({ invite }) {
         case 'cancelled':
             return (
                 <>
+                    <img className="games_logo" src={invite.games_logo} />
                     <li>
                         Noob ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
@@ -65,6 +67,7 @@ function InviteItem({ invite }) {
         case 'accepted':
             return (
                 <>
+                    <img className="games_logo" src={invite.games_logo} />
                     <li>
                         Noob ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
@@ -93,6 +96,7 @@ function InviteItem({ invite }) {
         case 'noob_cleared':
             return (
                 <>
+                    <img className="games_logo" src={invite.games_logo} />
                     <li>
                         Noob ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />

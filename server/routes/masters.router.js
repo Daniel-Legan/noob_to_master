@@ -15,14 +15,15 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                             masters.lng, 
                             masters.game_id, 
                             masters.noob_or_master, 
-                            games.title
+                            games.title,
+                            games.logo AS games_logo
                         FROM users masters
                         JOIN games
                             ON masters.game_id = games.id
                         LEFT JOIN connections
                             ON connections.master_id = masters.id
                         WHERE masters.noob_or_master = 'master'
-                        GROUP BY masters.id, games.title
+                        GROUP BY masters.id, games.title, games.logo
                         HAVING count(connections.id) FILTER (WHERE noob_id = $1) = 0;
                     `;
     pool

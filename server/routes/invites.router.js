@@ -9,7 +9,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     // console.log(req.user.id);
     // return invites
     const queryText = `
-                        SELECT connections.id, noob_id, phone, noob_message, status, username AS noob_username, title, noob_or_master
+                        SELECT 
+                            connections.id, 
+                            noob_id, 
+                            phone, 
+                            noob_message, 
+                            status, 
+                            username AS noob_username, 
+                            title, 
+                            noob_or_master,
+                            games.logo AS games_logo
                         FROM connections
                         JOIN users ON connections.noob_id = users.id
                         JOIN games ON users.game_id = games.id
