@@ -16,6 +16,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
+import Link from '@mui/material/Link';
+
 
 function Nav() {
   const dispatch = useDispatch();
@@ -48,9 +50,9 @@ function Nav() {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    borderRadius: '10px'
   };
 
   const buttonStyles = {
@@ -58,7 +60,7 @@ function Nav() {
   }
 
   return (
-    <div>
+    <Box>
       {user.noob_or_master === 'noob' &&
         <Drawer
           anchor='left'
@@ -133,12 +135,16 @@ function Nav() {
       <Modal
         open={openLoginModal}
         onClose={handleCloseLogin}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <LoginForm handleCloseLogin={handleCloseLogin} setIsDrawerOpen={setIsDrawerOpen} />
-          <Button onClick={() => { handleCloseLogin(); handleOpenRegister() }}>new user? register</Button>
+          <Link
+            underline="hover"
+            sx={{ cursor: "pointer" }}
+            onClick={() => { handleCloseLogin(); handleOpenRegister() }}
+          >
+            new user? register
+          </Link>
         </Box>
       </Modal>
 
@@ -146,8 +152,6 @@ function Nav() {
       <Modal
         open={openRegisterModal}
         onClose={handleCloseRegister}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <RegisterForm handleCloseRegister={handleCloseRegister} setIsDrawerOpen={setIsDrawerOpen} />
@@ -173,7 +177,7 @@ function Nav() {
             </Typography>
             <Box>
               {user.id && (
-                <Box sx={{display: "flex"}}>
+                <Box sx={{ display: "flex" }}>
                   <Box sx={{ marginRight: "10px" }}>
                     <img className="games_logo" src={user.game_logo} />
                   </Box>
@@ -188,7 +192,7 @@ function Nav() {
           </Toolbar>
         </AppBar>
       </Box>
-    </div>
+    </Box>
   );
 }
 

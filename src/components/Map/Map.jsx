@@ -95,7 +95,7 @@ const Map = () => {
         bgcolor: 'background.paper',
         boxShadow: 24,
         p: 4,
-        borderRadius: "4px",
+        borderRadius: '10px'
     };
 
     return (
