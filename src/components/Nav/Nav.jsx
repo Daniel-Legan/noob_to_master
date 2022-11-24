@@ -1,7 +1,6 @@
 
 import Drawer from '@mui/material/Drawer';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import * as React from 'react';
@@ -17,9 +16,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
-import { Paper } from '@mui/material';
-
 
 function Nav() {
   const dispatch = useDispatch();
@@ -62,7 +58,7 @@ function Nav() {
   }
 
   return (
-    <nav>
+    <div>
       {user.noob_or_master === 'noob' &&
         <Drawer
           anchor='left'
@@ -81,7 +77,7 @@ function Nav() {
           <Button sx={buttonStyles} onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
-            About
+            about
           </Button>
           <Button sx={{ color: 'white' }} onClick={handleOnClick}>logout</Button>
         </Drawer>}
@@ -103,7 +99,7 @@ function Nav() {
           <Button sx={buttonStyles} onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
-            About
+            about
           </Button>
           <Button sx={buttonStyles} onClick={handleOnClick}>logout</Button>
         </Drawer>}
@@ -124,10 +120,10 @@ function Nav() {
             </Typography>
             <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
             <Button sx={buttonStyles} onClick={handleOpenLogin}>
-              Login
+              login
             </Button>
             <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
-              About
+              about
             </Button>
           </Drawer>
         </>
@@ -158,6 +154,7 @@ function Nav() {
         </Box>
       </Modal>
 
+      {/* navigation bar */}
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
@@ -174,18 +171,24 @@ function Nav() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Noob-to-Master
             </Typography>
-            <Typography>
+            <Box>
               {user.id && (
-                <>
-                  <img className="games_logo" src={user.game_logo} />
-                  <span>hello, {user.username} ({user.noob_or_master})</span>
-                </>
+                <Box sx={{display: "flex"}}>
+                  <Box sx={{ marginRight: "10px" }}>
+                    <img className="games_logo" src={user.game_logo} />
+                  </Box>
+                  <Box>
+                    <Typography>
+                      hello, <i>{user.username}</i> ({user.noob_or_master})
+                    </Typography>
+                  </Box>
+                </Box>
               )}
-            </Typography>
+            </Box>
           </Toolbar>
         </AppBar>
       </Box>
-    </nav>
+    </div>
   );
 }
 
