@@ -12,10 +12,10 @@ function RequestItem({ request }) {
                 <>
                     <img className="games_logo" src={request.games_logo} />
                     <li>
-                        Master ID: {request.master_id} <br />
+                        User ID: {request.master_id} <br />
                         Username: {request.master_username} <br />
-                        Game: {request.title} <br />
-                        Noob or Master: {request.noob_or_master} <br />
+                        User's Current Game: {request.title} <br />
+                        User is Currently a: {request.noob_or_master} <br />
                         Status: {request.status} <br />
                         Connection ID: {request.id}
                     </li>
@@ -39,12 +39,12 @@ function RequestItem({ request }) {
                 <>
                     <img className="games_logo" src={request.games_logo} />
                     <li>
-                        Master ID: {request.master_id} <br />
+                        User ID: {request.master_id} <br />
                         Username: {request.master_username} <br />
-                        Game: {request.title} <br />
-                        Noob or Master: {request.noob_or_master} <br />
+                        User's Current Game: {request.title} <br />
+                        User is Currently a: {request.noob_or_master} <br />
                         Status: {request.status} <br />
-                        Connection ID: {request.id} <br />
+                        Connection ID: {request.id}
                         <button onClick={() => {
                             dispatch({
                                 type: 'DELETE_CONNECTION',
@@ -59,10 +59,10 @@ function RequestItem({ request }) {
                 <>
                     <img className="games_logo" src={request.games_logo} />
                     <li>
-                        Master ID: {request.master_id} <br />
+                        User ID: {request.master_id} <br />
                         Username: {request.master_username} <br />
-                        Game: {request.title} <br />
-                        Noob or Master: {request.noob_or_master} <br />
+                        User's Current Game: {request.title} <br />
+                        User is Currently a: {request.noob_or_master} <br />
                         Status: {request.status} <br />
                         Phone: {request.phone} <br />
                         Connection ID: {request.id} <br />
@@ -83,10 +83,10 @@ function RequestItem({ request }) {
                 <>
                     <img className="games_logo" src={request.games_logo} />
                     <li>
-                        Master ID: {request.master_id} <br />
+                        User ID: {request.master_id} <br />
                         Username: {request.master_username} <br />
-                        Game: {request.title} <br />
-                        Noob or Master: {request.noob_or_master} <br />
+                        User's Current Game: {request.title} <br />
+                        User is Currently a: {request.noob_or_master} <br />
                         Status: {request.status} <br />
                         Phone: {request.phone} <br />
                         Connection ID: {request.id} <br />
