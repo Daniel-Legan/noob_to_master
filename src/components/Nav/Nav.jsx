@@ -68,7 +68,7 @@ function Nav() {
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
           PaperProps={{
-            sx: { width: "20%", background: 'black' }
+            sx: { width: "10%", background: 'black' }
           }}
         >
           <Typography align="center" color={'white'} variant="h6">
@@ -91,7 +91,7 @@ function Nav() {
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
           PaperProps={{
-            sx: { width: "20%", background: 'black' }
+            sx: { width: "10%", background: 'black' }
           }}
         >
           <Typography align="center" color={'white'} variant="h6">
@@ -114,7 +114,7 @@ function Nav() {
             // called when clicking outside the drawer
             onClose={() => setIsDrawerOpen(false)}
             PaperProps={{
-              sx: { width: "20%", background: 'black' }
+              sx: { width: "10%", background: 'black' }
             }}
           >
             <Typography align="center" color={'white'} variant="h6">
