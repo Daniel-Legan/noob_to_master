@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 
+
 function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -63,6 +64,7 @@ function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
 
           <Box sx={{ display: "flex", marginTop: '10px' }}>
             <TextField
+              required
               size='small'
               fullWidth
               label="username"
@@ -71,8 +73,9 @@ function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
             />
           </Box>
 
-          <Box sx={{ display: "flex", margin: '10px 0px'}}>
+          <Box sx={{ display: "flex", margin: '10px 0px' }}>
             <TextField
+              required
               size='small'
               fullWidth
               type="password"

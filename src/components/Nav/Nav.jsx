@@ -121,12 +121,13 @@ function Nav() {
               DASHBOARD
             </Typography>
             <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-            <Button sx={buttonStyles} onClick={handleOpenLogin}>
-              login
-            </Button>
             <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
               about
             </Button>
+            <Button sx={buttonStyles} onClick={handleOpenLogin}>
+              login
+            </Button>
+
           </Drawer>
         </>
       )}

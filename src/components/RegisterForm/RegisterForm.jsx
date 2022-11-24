@@ -2,6 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import AutoComplete from '../AutoComplete/AutoComplete';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+
 
 
 function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
@@ -46,80 +59,112 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
   }
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+    <Box>
+      <form onSubmit={registerUser}>
+        <Typography variant="h6" textAlign={'center'}>
+          REGISTER
+        </Typography>
 
-      {errors.registrationMessage && (
-        <h3 className="alert" role="alert">
-          {errors.registrationMessage}
-        </h3>
-      )}
+        {errors.registrationMessage && (
+          <h3 className="alert" role="alert">
+            {errors.registrationMessage}
+          </h3>
+        )}
 
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={username}
+        <Box sx={{ margin: '20px 0px' }}>
+          <TextField
             required
+            size='small'
+            fullWidth
+            label="username"
+            value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
-      </div>
+        </Box>
 
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
+        <Box>
+          <TextField
             required
+            size='small'
+            fullWidth
+            type="password"
+            label="password"
+            value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
-      </div>
+        </Box>
 
-      <AutoComplete />
+        <AutoComplete />
 
-      <label htmlFor="phone">
-        Phone:
         {/* make phone number required */}
-        <MuiPhoneNumber required defaultCountry={'us'} onChange={handleOnChange} />
-      </label>
+        <Box display={"flex"}>
 
-      <div>
-        {/* use MUI component for Games: */}
-        {/* remove space after Game: */}
-        <label htmlFor="games">Game: </label>
-        <select
-          onChange={(event) => setGame(event.target.value)}
-          value={game}
-          required
-        >
-          <option value="" disabled>select game</option>
-          {gamesList.map(game => (
-            <option key={game.id} value={game.id}>{game.title}</option>
-          ))}
-        </select>
-      </div>
+          <MuiPhoneNumber
+            required
+            size='small'
+            sx={{ width: "200px" }}
+            label="phone"
+            defaultCountry={'us'}
+            onChange={handleOnChange}
+          />
 
-      <div className="radio-box">
-        <input type="radio" name="question" id="noob" onChange={() => setNoobOrMaster('noob')} required />
-        <label htmlFor="noobOrMaster">noob</label>
-      </div>
+          <FormControl sx={{ marginLeft: '20px' }}>
+            <FormLabel required id="row-radio-buttons-group">skill:</FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="row-radio-buttons-group"
+              name="row-radio-buttons-group-name"
+            >
+              <FormControlLabel
+                value="noob"
+                control={<Radio />}
+                label="noob"
+                onChange={() => setNoobOrMaster('noob')}
+                required />
+              <FormControlLabel
+                value="master"
+                control={<Radio />}
+                label="master"
+                onChange={() => setNoobOrMaster('master')}
+                required />
+            </RadioGroup>
+          </FormControl>
 
-      <div className="radio-box">
-        <input type="radio" name="question" id="master" onChange={() => setNoobOrMaster('master')} required />
-        <label htmlFor="noobOrMaster">master</label>
-      </div>
+        </Box>
 
-      <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
-      </div>
+        <Box>
+          <FormControl
+            required
+            size="small"
+            variant="standard"
+            sx={{
+              width: "200px"
+            }}
+          >
+            <InputLabel id="select-label">game</InputLabel>
+            <Select
+              labelId="select-label"
+              id="games"
+              value={game}
+              label="game"
+              onChange={(event) => setGame(event.target.value)}
+            >
+              {gamesList.map(game => (
+                <MenuItem key={game.id} value={game.id}>{game.title}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
 
-    </form>
+        <Box textAlign={'right'}>
+          <Button type='submit' variant="contained">
+            register
+          </Button>
+        </Box>
+
+      </form>
+    </Box>
+
   );
 }
 
