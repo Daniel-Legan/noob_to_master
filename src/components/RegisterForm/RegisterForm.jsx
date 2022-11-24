@@ -108,7 +108,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
             onChange={handleOnChange}
           />
 
-          <FormControl sx={{ marginLeft: '20px' }}>
+          <FormControl sx={{ marginLeft: '18px' }}>
             <FormLabel required id="row-radio-buttons-group">skill:</FormLabel>
             <RadioGroup
               row
