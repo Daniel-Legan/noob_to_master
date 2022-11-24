@@ -75,7 +75,7 @@ function Nav() {
             DASHBOARD
           </Typography>
           <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button sx={buttonStyles} onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/edit'); setIsDrawerOpen(false) }}>game and role</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
@@ -98,7 +98,7 @@ function Nav() {
             DASHBOARD
           </Typography>
           <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button sx={buttonStyles} onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/edit'); setIsDrawerOpen(false) }}>game and role</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
             about

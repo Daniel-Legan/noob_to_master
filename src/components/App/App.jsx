@@ -92,7 +92,7 @@ function App() {
           <ProtectedRoute
 
             exact
-            path="/edit/:id"
+            path="/edit"
           >
             <EditUser />
           </ProtectedRoute>

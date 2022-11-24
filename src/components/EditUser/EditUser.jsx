@@ -15,7 +15,6 @@ function EditUser() {
     const history = useHistory();
 
     useEffect(() => {
-        if (params.id) {
             dispatch({
                 type: 'FETCH_EDIT_USER'
             });
@@ -23,8 +22,7 @@ function EditUser() {
             dispatch({
                 type: 'FETCH_GAMES'
             });
-        }
-    }, [params.id]);
+    }, []);
 
     const onSubmit = (evt) => {
         evt.preventDefault();
