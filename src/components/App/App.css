@@ -110,7 +110,7 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
-
+ 
 .placesAutoCompleteContainer {
   position: absolute;
   z-index: 1;
@@ -120,3 +120,7 @@ input {
 img.games_logo {
   height: 25px;
 }
+
+/* * {
+  border: black solid 2px;
+} */

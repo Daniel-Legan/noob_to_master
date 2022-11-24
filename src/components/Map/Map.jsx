@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import { useHistory } from 'react-router-dom';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Swal from 'sweetalert2'
+import TextField from '@mui/material/TextField';
 
 // npm i @react-google-maps/api
-// when connection established, do not let noob see master's location on map
 
 const Map = () => {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
     const mastersList = useSelector((store) => store.mastersReducer);
-    // console.log('masterList', mastersList);
-    // console.log('user', user);
 
     const [openRequestModal, setOpenRequestModal] = React.useState(false);
     const handleOpenRequestModal = () => setOpenRequestModal(true);
@@ -79,7 +77,7 @@ const Map = () => {
 
     const mapStyles = {
         height: "70vh",
-        width: "100%"
+        width: "100%",
     };
 
     const noobIcon =
@@ -93,29 +91,32 @@ const Map = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: 650,
         bgcolor: 'background.paper',
-        border: '2px solid #000',
         boxShadow: 24,
         p: 4,
+        borderRadius: "4px",
     };
-    console.log('SELECTED', selected);
-    return (
-        <>
-            {/* <LoadScript
-                // import from .env file
-                googleMapsApiKey='AIzaSyCkasLe4gAjGO14hRH8VHvtc1477xaGCIc'
-            > */}
 
+    return (
+        <Box
+            sx={{
+                margin: "50px",
+                border: "#1976d2 solid 10px",
+                borderRadius: "4px"
+            }}
+        >
             <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={13}
-                center={center}>
+                center={center}
+            >
 
                 <Marker
                     key={user.username}
                     position={{ lat: Number(user.lat), lng: Number(user.lng) }}
-                    icon={noobIcon} />
+                    icon={noobIcon}
+                />
 
                 {
                     mastersList.map(master => {
@@ -138,31 +139,56 @@ const Map = () => {
                         <Modal
                             open={openRequestModal}
                             onClose={handleCloseRequestModal}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
                         >
-                            <Box sx={style} >
-                                <div>
-                                    <img className="game_logo" src={selected.games_logo}/>
-                                    {selected.username}: ({selected.noob_or_master}) game title: {selected.title}
+                            <Box sx={style}>
+                                <Box>
+                                    <Box sx={{ display: "flex" }}>
+                                        <Box sx={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            marginRight: "10px"
+                                        }}
+                                        >
+                                            <img className="games_logo" src={selected.games_logo} />
+                                        </Box>
+                                        <Box>
+                                            <Box>
+                                                {selected.username} ({selected.noob_or_master})
+                                            </Box>
+                                            <Box>
+                                                Game Title: <b>{selected.title}</b>
+                                            </Box>
+                                        </Box>
+
+                                    </Box>
+
                                     <form onSubmit={handleSubmit}>
-                                        <input
-                                            type="text"
-                                            name="message"
+                                        <TextField
                                             required
+                                            fullWidth
+                                            sx={{margin: "10px 0px"}}
                                             value={newMessage}
                                             onChange={(event) => setNewMessage(event.target.value)}
+                                            id="outlined-basic"
+                                            label="type message"
+                                            variant="outlined"
                                         />
-                                        <button type="submit">send message</button>
+                                        <Box textAlign={'right'}>
+                                            <Button
+                                                variant="contained"
+                                                type="submit"
+                                            >
+                                                send
+                                            </Button>
+                                        </Box>
                                     </form>
-                                </div>
+                                </Box>
                             </Box>
                         </Modal>
                     )
                 }
             </GoogleMap>
-            {/* </LoadScript> */}
-        </>
+        </Box>
     )
 }
 

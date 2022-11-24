@@ -12,16 +12,6 @@ function LandingPage() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // const onLogin = (event) => {
-  //   history.push('/login');
-  // };
-
-  // if (user.id) {
-  //   dispatch({
-  //     type: 'FETCH_MASTERS' // needs different SQL GET request later
-  //   });
-  // }
-
   return (
     <>
       <div className="container">
@@ -61,19 +51,6 @@ function LandingPage() {
               amet nisi.
             </p>
           </div>
-          {/* {!user.id &&
-            <div className="grid-col grid-col_4">
-
-              <RegisterForm />
-
-              <center>
-                <h4>Already a Member?</h4>
-                <button className="btn btn_sizeSm" onClick={onLogin}>
-                  Login
-                </button>
-              </center>
-            </div>
-          } */}
         </div>
       </div>
     </>

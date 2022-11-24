@@ -1,8 +1,6 @@
 
 import Drawer from '@mui/material/Drawer';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import * as React from 'react';
@@ -13,8 +11,14 @@ import Modal from '@mui/material/Modal';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
 
 function Nav() {
+  const dispatch = useDispatch();
   // drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -28,9 +32,14 @@ function Nav() {
   const handleOpenRegister = () => setOpenRegisterModal(true);
   const handleCloseRegister = () => setOpenRegisterModal(false);
 
+  const handleOnClick = () => {
+    dispatch({ type: 'LOGOUT' })
+    history.push('/home');
+    setIsDrawerOpen();
+  };
+
   const user = useSelector((store) => store.user);
   const history = useHistory();
-  console.log(user);
 
   const style = {
     position: 'absolute',
@@ -44,24 +53,33 @@ function Nav() {
     p: 4,
   };
 
+  const buttonStyles = {
+    color: 'white'
+  }
+
   return (
-    <div className="nav">
+    <div>
       {user.noob_or_master === 'noob' &&
         <Drawer
           anchor='left'
           open={isDrawerOpen}
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
+          PaperProps={{
+            sx: { width: "20%", background: 'black' }
+          }}
         >
-          DASHBOARD
-          <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
-          <Button onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
-          <Button onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
-          <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
-            About
+          <Typography align="center" color={'white'} variant="h6">
+            DASHBOARD
+          </Typography>
+          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+            about
           </Button>
-          <LogOutButton setIsDrawerOpen={setIsDrawerOpen} />
+          <Button sx={{ color: 'white' }} onClick={handleOnClick}>logout</Button>
         </Drawer>}
 
       {user.noob_or_master === 'master' &&
@@ -70,94 +88,106 @@ function Nav() {
           open={isDrawerOpen}
           // called when clicking outside the drawer
           onClose={() => setIsDrawerOpen(false)}
+          PaperProps={{
+            sx: { width: "20%", background: 'black' }
+          }}
         >
-          DASHBOARD
-          <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
-          <Button onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
-          <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
-            About
+          <Typography align="center" color={'white'} variant="h6">
+            DASHBOARD
+          </Typography>
+          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push(`/edit/${user.id}`); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+            about
           </Button>
-          <LogOutButton setIsDrawerOpen={setIsDrawerOpen} />
+          <Button sx={buttonStyles} onClick={handleOnClick}>logout</Button>
         </Drawer>}
 
-      {user.id &&
-        <Button onClick={() => setIsDrawerOpen(true)}>
-          <h2 className="nav-title">☰</h2>
-        </Button>}
-
-      <div>
-
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          <>
-            <Button onClick={() => setIsDrawerOpen(true)}>
-              <h2 className="nav-title">☰</h2>
-            </Button>
-            <Drawer
-              anchor='left'
-              open={isDrawerOpen}
-              // called when clicking outside the drawer
-              onClose={() => setIsDrawerOpen(false)}
-            >
+      {!user.id && (
+        <>
+          <Drawer
+            anchor='left'
+            open={isDrawerOpen}
+            // called when clicking outside the drawer
+            onClose={() => setIsDrawerOpen(false)}
+            PaperProps={{
+              sx: { width: "20%", background: 'black' }
+            }}
+          >
+            <Typography align="center" color={'white'} variant="h6">
               DASHBOARD
-              <Button onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-              <Button onClick={handleOpenLogin}>
-                Login
-              </Button>
-              <Button onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
-                About
-              </Button>
-            </Drawer>
-          </>
+            </Typography>
+            <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
+            <Button sx={buttonStyles} onClick={handleOpenLogin}>
+              login
+            </Button>
+            <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
+              about
+            </Button>
+          </Drawer>
+        </>
+      )}
 
-        )}
+      {/* login modal */}
+      <Modal
+        open={openLoginModal}
+        onClose={handleCloseLogin}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <LoginForm handleCloseLogin={handleCloseLogin} setIsDrawerOpen={setIsDrawerOpen} />
+          <Button onClick={() => { handleCloseLogin(); handleOpenRegister() }}>new user? register</Button>
+        </Box>
+      </Modal>
 
-        {/* login modal */}
-        <Modal
-          open={openLoginModal}
-          onClose={handleCloseLogin}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <LoginForm handleCloseLogin={handleCloseLogin} setIsDrawerOpen={setIsDrawerOpen} />
-            <Button onClick={() => { handleCloseLogin(); handleOpenRegister() }}>new user? register</Button>
-          </Box>
-        </Modal>
+      {/* register modal */}
+      <Modal
+        open={openRegisterModal}
+        onClose={handleCloseRegister}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <RegisterForm handleCloseRegister={handleCloseRegister} setIsDrawerOpen={setIsDrawerOpen} />
+        </Box>
+      </Modal>
 
-        {/* register modal */}
-        <Modal
-          open={openRegisterModal}
-          onClose={handleCloseRegister}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <RegisterForm handleCloseRegister={handleCloseRegister} setIsDrawerOpen={setIsDrawerOpen} />
-          </Box>
-        </Modal>
-
-
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <img className="games_logo" src={user.game_logo} />
-            <span>hello, {user.username} ({user.game_title}) - {user.noob_or_master}</span>
-            {/* <Link className="navLink" to="/user">
-              Home
-            </Link> */}
-
-            {/* <Link className="navLink" to="/info">
-              Info Page
-            </Link> */}
-
-            {/* <LogOutButton className="navLink" /> */}
-          </>
-        )}
-
-
-      </div>
+      {/* navigation bar */}
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              onClick={() => setIsDrawerOpen(true)}
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Noob-to-Master
+            </Typography>
+            <Box>
+              {user.id && (
+                <Box sx={{display: "flex"}}>
+                  <Box sx={{ marginRight: "10px" }}>
+                    <img className="games_logo" src={user.game_logo} />
+                  </Box>
+                  <Box>
+                    <Typography>
+                      hello, <i>{user.username}</i> ({user.noob_or_master})
+                    </Typography>
+                  </Box>
+                </Box>
+              )}
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
     </div>
   );
 }
