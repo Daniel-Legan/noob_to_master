@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import './LandingPage.css';
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
   const [heading, setHeading] = useState('Welcome');
-  const user = useSelector((store) => store.user);
-  const history = useHistory();
-  const dispatch = useDispatch();
 
   return (
     <>
