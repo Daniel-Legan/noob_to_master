@@ -111,12 +111,6 @@ input {
   margin-bottom: 10px;
 }
  
-.placesAutoCompleteContainer {
-  position: absolute;
-  z-index: 1;
-  cursor: pointer;
-}
-
 img.games_logo {
   height: 25px;
 }

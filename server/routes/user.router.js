@@ -35,8 +35,9 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/', rejectUnauthenticated, (req, res) => {
-  console.log('game id', req.body.game_id);
-  console.log('user id', req.user.id);
+  // console.log('game id', req.body.game_id);
+  // console.log('noob_or_master', req.body.noob_or_master);
+  // console.log('user id', req.user.id);
 
   const sqlText = `UPDATE users SET game_id = $1, noob_or_master = $2 WHERE id = $3`;
   pool.query(sqlText, [req.body.game_id, req.body.noob_or_master, req.user.id])

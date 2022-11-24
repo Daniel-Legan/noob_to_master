@@ -11,11 +11,11 @@ function InviteItem({ invite }) {
                 <>
                     <img className="games_logo" src={invite.games_logo} />
                     <li>
-                        NOOB ID: {invite.noob_id} <br />
+                        User ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
-                        Game: {invite.title} <br />
+                        User's Current Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />
-                        Noob or Master: {invite.noob_or_master} <br />
+                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
                         Connection ID: {invite.id}
                     </li>
@@ -44,11 +44,11 @@ function InviteItem({ invite }) {
                 <>
                     <img className="games_logo" src={invite.games_logo} />
                     <li>
-                        Noob ID: {invite.noob_id} <br />
+                        User ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
-                        Game: {invite.title} <br />
+                        User's Current Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />
-                        Noob or Master: {invite.noob_or_master} <br />
+                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
                         Connection ID: {invite.id} <br />
                         <button onClick={() => {
@@ -69,11 +69,11 @@ function InviteItem({ invite }) {
                 <>
                     <img className="games_logo" src={invite.games_logo} />
                     <li>
-                        Noob ID: {invite.noob_id} <br />
+                        User ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
-                        Game: {invite.title} <br />
+                        User's Current Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />
-                        Noob or Master: {invite.noob_or_master} <br />
+                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
                         Phone: {invite.phone} <br />
                         Connection ID: {invite.id} <br />
@@ -98,11 +98,11 @@ function InviteItem({ invite }) {
                 <>
                     <img className="games_logo" src={invite.games_logo} />
                     <li>
-                        Noob ID: {invite.noob_id} <br />
+                        User ID: {invite.noob_id} <br />
                         Username: {invite.noob_username} <br />
-                        Game: {invite.title} <br />
+                        User's Current Game: {invite.title} <br />
                         Message: {invite.noob_message} <br />
-                        Noob or Master: {invite.noob_or_master} <br />
+                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
                         Phone: {invite.phone} <br />
                         Connection ID: {invite.id} <br />

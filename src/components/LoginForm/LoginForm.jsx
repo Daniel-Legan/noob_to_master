@@ -5,6 +5,9 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+
 
 function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
   const [username, setUsername] = useState('');
@@ -12,7 +15,7 @@ function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
   const errors = useSelector(store => store.errors);
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
 
@@ -47,51 +50,55 @@ function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
 
   return (
     <>
-      <form className="formPanel" onSubmit={login}>
-        <h2>Login</h2>
-        {errors.loginMessage && (
-          <h3 className="alert" role="alert">
-            {errors.loginMessage}
-          </h3>
-        )}
-        <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
+      <Box>
+        <form onSubmit={login}>
+          <Typography variant="h6" textAlign={'center'}>
+            LOGIN
+          </Typography>
+
+          {errors.loginMessage && (
+            <h3 className="alert" role="alert">
+              {errors.loginMessage}
+            </h3>
+          )}
+
+          <Box sx={{ display: "flex", marginTop: '10px' }}>
+            <TextField
               required
+              size='small'
+              fullWidth
+              label="username"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
+          </Box>
+
+          <Box sx={{ display: "flex", margin: '10px 0px' }}>
+            <TextField
               required
+              size='small'
+              fullWidth
+              type="password"
+              label="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
-          </label>
-        </div>
-        <div>
-          <input className="btn" type="submit" name="submit" value="Log In" />
-          {/* <Button onClick={handleOpen}>new user? register</Button> */}
-        </div>
-      </form>
+          </Box>
+
+          <Box textAlign={'right'}>
+            <Button type='submit' variant="contained">
+              submit
+            </Button>
+            {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
+          </Box>
+        </form>
+      </Box>
 
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {/* app crashes do to PlacesAutoComplete not loading in error logs */}
           <RegisterForm />
         </Box>
       </Modal>

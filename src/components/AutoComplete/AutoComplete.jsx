@@ -4,6 +4,10 @@ import PlacesAutoComplete, {
     getLatLng
 } from "react-places-autocomplete";
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 export default function AutoComplete() {
     const dispatch = useDispatch();
@@ -24,36 +28,46 @@ export default function AutoComplete() {
     };
 
     return (
-        <div>
+        <Box>
             <PlacesAutoComplete
                 value={address}
                 onChange={setAddress}
                 onSelect={handleSelect}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                    <div>
-                        <label htmlFor="address">Address:</label>
-                        <input required {...getInputProps()} />
+                    <Box sx={{margin: '10px 0px'}}>
+                        <TextField
+                            required
+                            size='small'
+                            fullWidth
+                            label="address"
+                            variant="standard"
+                            {...getInputProps()}
+                        />
                         {/* <input required {...getInputProps({ placeholder: "type address" })} /> */}
-
-                        <div className="placesAutoCompleteContainer">
-                            {loading ? <div>...loading</div> : null}
+                        <Box
+                            position={"absolute"}
+                            zIndex={1}
+                            sx={{ cursor: "pointer" }}
+                        >
+                            {loading ? <Box backgroundColor={'white'}>...loading</Box> : null}
 
                             {suggestions.map(suggestion => {
                                 const style = {
-                                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                                    backgroundColor: suggestion.active ? "#1976d2" : "#fff",
+                                    color: suggestion.active ? "#fff" : "#000"
                                 };
 
                                 return (
-                                    <div key={suggestion.description} {...getSuggestionItemProps(suggestion, { style })}>
+                                    <Box key={suggestion.description} {...getSuggestionItemProps(suggestion, { style })}>
                                         {suggestion.description}
-                                    </div>
+                                    </Box>
                                 );
                             })}
-                        </div>
-                    </div>
+                        </Box>
+                    </Box>
                 )}
             </PlacesAutoComplete>
-        </div>
+        </Box>
     );
 }
