@@ -4,20 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 function RequestItem({ request }) {
 
     const dispatch = useDispatch();
+    console.log(request);
 
 
     switch (request.status) {
         case 'pending':
             return (
                 <>
-                    <img className="games_logo" src={request.games_logo} />
+                    <img className="games_logo" src={request.connections_logo} />
                     <li>
                         User ID: {request.master_id} <br />
-                        Username: {request.master_username} <br />
-                        User's Current Game: {request.title} <br />
-                        User is Currently a: {request.noob_or_master} <br />
+                        Username: {request.master_username} (master) <br />
+                        Request Game Title: {request.connections_game_title} <br />
                         Status: {request.status} <br />
-                        Connection ID: {request.id}
+                        Connection ID: {request.id} <br />
                     </li>
                     <button onClick={() => {
                         dispatch({
@@ -37,14 +37,13 @@ function RequestItem({ request }) {
         case 'rejected':
             return (
                 <>
-                    <img className="games_logo" src={request.games_logo} />
+                    <img className="games_logo" src={request.connections_logo} />
                     <li>
                         User ID: {request.master_id} <br />
-                        Username: {request.master_username} <br />
-                        User's Current Game: {request.title} <br />
-                        User is Currently a: {request.noob_or_master} <br />
+                        Username: {request.master_username} (master) <br />
+                        Request Game Title: {request.connections_game_title} <br />
                         Status: {request.status} <br />
-                        Connection ID: {request.id}
+                        Connection ID: {request.id} <br />
                         <button onClick={() => {
                             dispatch({
                                 type: 'DELETE_CONNECTION',
@@ -57,13 +56,13 @@ function RequestItem({ request }) {
         case 'accepted':
             return (
                 <>
-                    <img className="games_logo" src={request.games_logo} />
+                    <img className="games_logo" src={request.connections_logo} />
                     <li>
                         User ID: {request.master_id} <br />
-                        Username: {request.master_username} <br />
-                        User's Current Game: {request.title} <br />
-                        User is Currently a: {request.noob_or_master} <br />
+                        Username: {request.master_username} (master) <br />
+                        Request Game Title: {request.connections_game_title} <br />
                         Status: {request.status} <br />
+                        Connection ID: {request.id} <br />
                         Phone: {request.phone} <br />
                         Connection ID: {request.id} <br />
                         <button onClick={() => {
@@ -81,13 +80,13 @@ function RequestItem({ request }) {
         case 'master_cleared':
             return (
                 <>
-                    <img className="games_logo" src={request.games_logo} />
+                    <img className="games_logo" src={request.connections_logo} />
                     <li>
                         User ID: {request.master_id} <br />
-                        Username: {request.master_username} <br />
-                        User's Current Game: {request.title} <br />
-                        User is Currently a: {request.noob_or_master} <br />
+                        Username: {request.master_username} (master) <br />
+                        Request Game Title: {request.connections_game_title} <br />
                         Status: {request.status} <br />
+                        Connection ID: {request.id} <br />
                         Phone: {request.phone} <br />
                         Connection ID: {request.id} <br />
                         <button onClick={() => {

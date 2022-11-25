@@ -14,9 +14,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                             phone, 
                             status, 
                             username AS master_username, 
-                            title, 
-                            noob_or_master, 
-                            games.logo AS games_logo
+                            connections.game_logo AS connections_logo,
+                            connections.game_title AS connections_game_title
                         FROM connections
                         JOIN users ON connections.master_id = users.id
                         JOIN games ON users.game_id = games.id

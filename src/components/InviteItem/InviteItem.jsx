@@ -9,15 +9,14 @@ function InviteItem({ invite }) {
         case 'pending':
             return (
                 <>
-                    <img className="games_logo" src={invite.games_logo} />
+                    <img className="games_logo" src={invite.connections_logo} />
                     <li>
                         User ID: {invite.noob_id} <br />
-                        Username: {invite.noob_username} <br />
-                        User's Current Game: {invite.title} <br />
+                        Username: {invite.noob_username} (noob) <br />
+                        Invite Game Title: {invite.connections_game_title} <br />
                         Message: {invite.noob_message} <br />
-                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
-                        Connection ID: {invite.id}
+                        Connection ID: {invite.id} <br />
                     </li>
                     <button onClick={() => {
                         dispatch({
@@ -42,13 +41,12 @@ function InviteItem({ invite }) {
         case 'cancelled':
             return (
                 <>
-                    <img className="games_logo" src={invite.games_logo} />
+                    <img className="games_logo" src={invite.connections_logo} />
                     <li>
                         User ID: {invite.noob_id} <br />
-                        Username: {invite.noob_username} <br />
-                        User's Current Game: {invite.title} <br />
+                        Username: {invite.noob_username} (noob) <br />
+                        Invite Game Title: {invite.connections_game_title} <br />
                         Message: {invite.noob_message} <br />
-                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
                         Connection ID: {invite.id} <br />
                         <button onClick={() => {
@@ -67,16 +65,15 @@ function InviteItem({ invite }) {
         case 'accepted':
             return (
                 <>
-                    <img className="games_logo" src={invite.games_logo} />
+                    <img className="games_logo" src={invite.connections_logo} />
                     <li>
                         User ID: {invite.noob_id} <br />
-                        Username: {invite.noob_username} <br />
-                        User's Current Game: {invite.title} <br />
+                        Username: {invite.noob_username} (noob) <br />
+                        Invite Game Title: {invite.connections_game_title} <br />
                         Message: {invite.noob_message} <br />
-                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
+                        Connection ID: {invite.id}  <br />
                         Phone: {invite.phone} <br />
-                        Connection ID: {invite.id} <br />
                         <button onClick={() => {
                             dispatch({
                                 type: 'UPDATE_STATUS',
@@ -96,16 +93,15 @@ function InviteItem({ invite }) {
         case 'noob_cleared':
             return (
                 <>
-                    <img className="games_logo" src={invite.games_logo} />
+                    <img className="games_logo" src={invite.connections_logo} />
                     <li>
                         User ID: {invite.noob_id} <br />
-                        Username: {invite.noob_username} <br />
-                        User's Current Game: {invite.title} <br />
+                        Username: {invite.noob_username} (noob) <br />
+                        Invite Game Title: {invite.connections_game_title} <br />
                         Message: {invite.noob_message} <br />
-                        User is Currently a: {invite.noob_or_master} <br />
                         Status: {invite.status} <br />
+                        Connection ID: {invite.id}  <br />
                         Phone: {invite.phone} <br />
-                        Connection ID: {invite.id} <br />
                         <button onClick={() => {
                             dispatch({
                                 type: 'DELETE_CONNECTION',
