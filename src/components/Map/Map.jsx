@@ -59,6 +59,8 @@ const Map = () => {
                 noob_id: user.id,
                 master_id: selected.id,
                 noob_message: newMessage,
+                game_logo: user.game_logo,
+                game_title: user.game_title
             }
         });
 

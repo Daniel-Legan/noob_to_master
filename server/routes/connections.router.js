@@ -8,9 +8,9 @@ router.post('/', (req, res) => {
 
         console.log('is authenticated?', req.isAuthenticated());
         console.log('user', req.user);
-        const sqlText = `INSERT INTO "connections" ("noob_id", "master_id", "noob_message")
-                        VALUES ($1, $2, $3);`;
-        const sqlParams = [req.body.noob_id, req.body.master_id, req.body.noob_message]
+        const sqlText = `INSERT INTO "connections" ("noob_id", "master_id", "noob_message", "game_logo", "game_title")
+                        VALUES ($1, $2, $3, $4, $5);`;
+        const sqlParams = [req.body.noob_id, req.body.master_id, req.body.noob_message, req.body.game_logo, req.body.game_title]
         pool.query(sqlText, sqlParams)
             .then(dbRes => {
                 res.sendStatus(201);

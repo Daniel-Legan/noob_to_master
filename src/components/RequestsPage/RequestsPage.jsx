@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import RequestItem from '../RequestItem/RequestItem';
+import Paper from '@mui/material/Paper';
+import List from '@mui/material/List';
+import Box from '@mui/material/Box';
 // FOR THE NOOB
 function RequestsPage() {
     const dispatch = useDispatch();
@@ -11,17 +14,16 @@ function RequestsPage() {
             type: 'FETCH_REQUESTS'
         });
     }, []);
-    console.log(requests);
     return (
-        <>
-            <h1>REQUESTS PAGE</h1>
-            <ul>
-                {requests.map(request =>
-                    <RequestItem key={request.id} request={request} />
-                    // come back to address ID issue
-                )}
-            </ul>
-        </>
+        <Box>
+            <Paper style={{ maxHeight: "525px", overflow: 'hidden', overflowY: 'scroll', margin: "50px" }}>
+                <List>
+                    {requests.map(request =>
+                        <RequestItem key={request.id} request={request} />
+                    )}
+                </List>
+            </Paper>
+        </Box>
     );
 }
 
