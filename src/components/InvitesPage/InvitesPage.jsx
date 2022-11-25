@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InviteItem from '../InviteItem/InviteItem';
+import Paper from '@mui/material/Paper';
+import List from '@mui/material/List';
+import Box from '@mui/material/Box';
 // FOR THE MASTER
 function InvitesPage() {
     const dispatch = useDispatch();
@@ -12,15 +15,15 @@ function InvitesPage() {
         });
     }, []);
     return (
-        <>
-            <h1>INVITES PAGE</h1>
-            <ul>
-                {invites.map(invite =>
-                    <InviteItem key={invite.id} invite={invite} />
-                )}
-            </ul>
-        </>
-
+        <Box>
+            <Paper style={{ maxHeight: "525px", overflow: 'hidden', overflowY: 'scroll', margin: "50px" }}>
+                <List>
+                    {invites.map(invite =>
+                        <InviteItem key={invite.id} invite={invite} />
+                    )}
+                </List>
+            </Paper>
+        </Box>
     );
 }
 

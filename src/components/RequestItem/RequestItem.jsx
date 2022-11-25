@@ -1,34 +1,59 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 // FOR THE NOOB
 function RequestItem({ request }) {
 
     const dispatch = useDispatch();
-    console.log(request);
-
 
     switch (request.status) {
         case 'pending':
             return (
-                <>
-                    <img className="games_logo" src={request.connections_logo} />
-                    <li>
-                        User ID: {request.master_id} <br />
-                        Username: {request.master_username} (master) <br />
-                        Request Game Title: {request.connections_game_title} <br />
-                        Status: {request.status} <br />
-                        Connection ID: {request.id} <br />
-                    </li>
-                    <button onClick={() => {
-                        dispatch({
-                            type: 'UPDATE_STATUS',
-                            payload: {
-                                id: request.id,
-                                newStatus: 'cancelled'
-                            }
-                        })
-                    }}>cancel</button>
-                </>
+                <Box>
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        sx={{
+                            margin: "20px",
+                            background: "#e8e8e8",
+                            borderRadius: "4px",
+                            padding: "20px",
+                            boxShadow: 5
+                        }}
+                    >
+                        <Box>
+                            <Box>
+                                <img className="requestInvite_logo" src={request.connections_logo} />
+                            </Box>
+                            <Box>
+                                <b>{request.connections_game_title}</b>
+                            </Box>
+                            <Box>
+                                {request.master_username} (master)
+                            </Box>
+                        </Box>
+                        <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
+                            <Box sx={{ marginRight: "10px" }}>
+                                {request.status}
+                            </Box>
+                            <Box>
+                                <Button
+                                    size='small'
+                                    variant='contained'
+                                    onClick={() => {
+                                        dispatch({
+                                            type: 'UPDATE_STATUS',
+                                            payload: {
+                                                id: request.id,
+                                                newStatus: 'cancelled'
+                                            }
+                                        })
+                                    }}>cancel</Button>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
             );
         case 'cancelled':
             return (
@@ -36,67 +61,144 @@ function RequestItem({ request }) {
             );
         case 'rejected':
             return (
-                <>
-                    <img className="games_logo" src={request.connections_logo} />
-                    <li>
-                        User ID: {request.master_id} <br />
-                        Username: {request.master_username} (master) <br />
-                        Request Game Title: {request.connections_game_title} <br />
-                        Status: {request.status} <br />
-                        Connection ID: {request.id} <br />
-                        <button onClick={() => {
-                            dispatch({
-                                type: 'DELETE_CONNECTION',
-                                payload: request.id
-                            })
-                        }}>delete</button>
-                    </li>
-                </>
+                <Box>
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        sx={{
+                            margin: "20px",
+                            background: "#e8e8e8",
+                            borderRadius: "4px",
+                            padding: "20px",
+                            boxShadow: 5
+                        }}
+                    >
+                        <Box>
+                            <Box>
+                                <img className="requestInvite_logo" src={request.connections_logo} />
+                            </Box>
+                            <Box>
+                                <b>{request.connections_game_title}</b>
+                            </Box>
+                            <Box>
+                                {request.master_username} (master)
+                            </Box>
+                        </Box>
+                        <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
+                            <Box sx={{ marginRight: "10px" }}>
+                                {request.status}
+                            </Box>
+                            <Box>
+                                <Button
+                                    size='small'
+                                    variant='contained'
+                                    onClick={() => {
+                                        dispatch({
+                                            type: 'DELETE_CONNECTION',
+                                            payload: request.id
+                                        })
+                                    }}>delete</Button>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
             );
         case 'accepted':
             return (
-                <>
-                    <img className="games_logo" src={request.connections_logo} />
-                    <li>
-                        User ID: {request.master_id} <br />
-                        Username: {request.master_username} (master) <br />
-                        Request Game Title: {request.connections_game_title} <br />
-                        Status: {request.status} <br />
-                        Connection ID: {request.id} <br />
-                        Phone: {request.phone} <br />
-                        Connection ID: {request.id} <br />
-                        <button onClick={() => {
-                            dispatch({
-                                type: 'UPDATE_STATUS',
-                                payload: {
-                                    id: request.id,
-                                    newStatus: 'noob_cleared'
-                                }
-                            })
-                        }}>clear</button>
-                    </li>
-                </>
+                <Box>
+                    <Box>
+                        <Box
+                            display="flex"
+                            justifyContent="space-between"
+                            sx={{
+                                margin: "20px",
+                                background: "#e8e8e8",
+                                borderRadius: "4px",
+                                padding: "20px",
+                                boxShadow: 5
+                            }}
+                        >
+                            <Box>
+                                <Box>
+                                    <img className="requestInvite_logo" src={request.connections_logo} />
+                                </Box>
+                                <Box>
+                                    <b>{request.connections_game_title}</b>
+                                </Box>
+                                <Box>
+                                    {request.master_username} (master)
+                                </Box>
+                            </Box>
+                            <Box display="flex" alignItems="center"> phone: {request.phone} </Box>
+                            <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
+                                <Box sx={{ marginRight: "10px" }}>
+                                    {request.status}
+                                </Box>
+                                <Box>
+                                    <Button
+                                        size='small'
+                                        variant='contained'
+                                        onClick={() => {
+                                            dispatch({
+                                                type: 'UPDATE_STATUS',
+                                                payload: {
+                                                    id: request.id,
+                                                    newStatus: 'noob_cleared'
+                                                }
+                                            })
+                                        }}>clear</Button>
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
             );
         case 'master_cleared':
             return (
-                <>
-                    <img className="games_logo" src={request.connections_logo} />
-                    <li>
-                        User ID: {request.master_id} <br />
-                        Username: {request.master_username} (master) <br />
-                        Request Game Title: {request.connections_game_title} <br />
-                        Status: {request.status} <br />
-                        Connection ID: {request.id} <br />
-                        Phone: {request.phone} <br />
-                        Connection ID: {request.id} <br />
-                        <button onClick={() => {
-                            dispatch({
-                                type: 'DELETE_CONNECTION',
-                                payload: request.id
-                            })
-                        }}>delete</button>
-                    </li>
-                </>
+                <Box>
+                    <Box>
+                        <Box
+                            display="flex"
+                            justifyContent="space-between"
+                            sx={{
+                                margin: "20px",
+                                background: "#e8e8e8",
+                                borderRadius: "4px",
+                                padding: "20px",
+                                boxShadow: 5
+                            }}
+                        >
+                            <Box>
+                                <Box>
+                                    <img className="requestInvite_logo" src={request.connections_logo} />
+                                </Box>
+                                <Box>
+                                    <b>{request.connections_game_title}</b>
+                                </Box>
+                                <Box>
+                                    {request.master_username} (master)
+                                </Box>
+                            </Box>
+                            <Box display="flex" alignItems="center"> phone: {request.phone} </Box>
+                            <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
+                                <Box sx={{ marginRight: "10px" }}>
+                                    {request.status}
+                                </Box>
+                                <Box>
+                                    <Button
+                                        size='small'
+                                        variant='contained'
+                                        onClick={() => {
+                                            dispatch({
+                                                type: 'DELETE_CONNECTION',
+                                                payload: request.id
+                                            })
+                                        }}>delete</Button>
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
             );
         case 'noob_cleared':
             return (
