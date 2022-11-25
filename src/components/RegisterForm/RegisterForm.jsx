@@ -97,7 +97,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
         <AutoComplete />
 
         {/* make phone number required */}
-        <Box display={"flex"}>
+        <Box display="flex" justifyContent="space-between">
 
           <MuiPhoneNumber
             required
@@ -108,7 +108,7 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
             onChange={handleOnChange}
           />
 
-          <FormControl sx={{ marginLeft: '18px' }}>
+          <FormControl>
             <FormLabel required id="row-radio-buttons-group">skill:</FormLabel>
             <RadioGroup
               row
@@ -120,13 +120,13 @@ function RegisterForm({ handleCloseRegister, setIsDrawerOpen }) {
                 control={<Radio />}
                 label="noob"
                 onChange={() => setNoobOrMaster('noob')}
-                required />
+              />
               <FormControlLabel
                 value="master"
                 control={<Radio />}
                 label="master"
                 onChange={() => setNoobOrMaster('master')}
-                required />
+              />
             </RadioGroup>
           </FormControl>
 

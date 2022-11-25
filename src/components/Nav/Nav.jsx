@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import RegisterForm from '../RegisterForm/RegisterForm';
+import EditUser from '../EditUser/EditUser';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -33,6 +34,12 @@ function Nav() {
   const [openRegisterModal, setOpenRegisterModal] = React.useState(false);
   const handleOpenRegister = () => setOpenRegisterModal(true);
   const handleCloseRegister = () => setOpenRegisterModal(false);
+
+  // modal edit user
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   const handleOnClick = () => {
     dispatch({ type: 'LOGOUT' })
@@ -75,7 +82,7 @@ function Nav() {
             DASHBOARD
           </Typography>
           <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button sx={buttonStyles} onClick={() => { history.push('/edit'); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false); setOpen(true) }}>game and role</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/requests'); setIsDrawerOpen(false) }}>requests</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/map'); setIsDrawerOpen(false) }}>find master</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
@@ -98,7 +105,7 @@ function Nav() {
             DASHBOARD
           </Typography>
           <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button sx={buttonStyles} onClick={() => { history.push('/edit'); setIsDrawerOpen(false) }}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false); setOpen(true)}}>game and role</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
             about
@@ -156,6 +163,16 @@ function Nav() {
       >
         <Box sx={style}>
           <RegisterForm handleCloseRegister={handleCloseRegister} setIsDrawerOpen={setIsDrawerOpen} />
+        </Box>
+      </Modal>
+
+      {/* game and role modal */}
+      <Modal
+        open={open}
+        onClose={handleClose}
+      >
+        <Box sx={style}>
+          <EditUser handleClose={handleClose} />
         </Box>
       </Modal>
 
