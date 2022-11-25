@@ -16,7 +16,7 @@ function InvitesPage() {
     }, []);
     return (
         <Box>
-            <Paper style={{ maxHeight: "525px", overflow: 'hidden', overflowY: 'scroll', margin: "50px" }}>
+            <Paper style={{ maxHeight: "525px", overflow: 'auto', overflowY: 'scroll', margin: "50px" }}>
                 <List>
                     {invites.map(invite =>
                         <InviteItem key={invite.id} invite={invite} />

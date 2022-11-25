@@ -16,7 +16,7 @@ function RequestsPage() {
     }, []);
     return (
         <Box>
-            <Paper style={{ maxHeight: "525px", overflow: 'hidden', overflowY: 'scroll', margin: "50px" }}>
+            <Paper style={{ maxHeight: "525px", overflow: 'auto', overflowY: 'scroll', margin: "50px" }}>
                 <List>
                     {requests.map(request =>
                         <RequestItem key={request.id} request={request} />

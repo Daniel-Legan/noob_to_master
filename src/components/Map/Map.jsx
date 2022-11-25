@@ -75,6 +75,8 @@ const Map = () => {
         dispatch({
             type: 'FETCH_MASTERS'
         });
+
+        setNewMessage('');
     }
 
     const mapStyles = {
