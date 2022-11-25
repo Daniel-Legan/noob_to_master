@@ -7,7 +7,7 @@ import AutoComplete from '../AutoComplete/AutoComplete';
 import EditAutoComplete from '../EditAutoComplete/EditAutoComplete';
 import Button from '@mui/material/Button';
 
-function EditUser() {
+function EditUser({ handleClose }) {
     const dispatch = useDispatch();
     const params = useParams();
     const user = useSelector(store => store.editUser);
@@ -26,10 +26,12 @@ function EditUser() {
 
     const onSubmit = (evt) => {
         evt.preventDefault();
+
         dispatch({
             type: 'SAVE_USER_DATA',
             payload: user
         });
+        handleClose();
     }
 
     function noob() {

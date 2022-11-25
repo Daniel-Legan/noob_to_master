@@ -89,14 +89,6 @@ function App() {
             <InvitesPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
-
-            exact
-            path="/edit"
-          >
-            <EditUser />
-          </ProtectedRoute>
-
           {/* <Route
             exact
             path="/login"
