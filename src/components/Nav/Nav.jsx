@@ -191,7 +191,7 @@ function Nav() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Noob-to-Master
+              noob to master
             </Typography>
             <Box>
               {user.id && (
@@ -201,7 +201,7 @@ function Nav() {
                   </Box>
                   <Box>
                     <Typography>
-                      hello, <i>{user.username}</i> ({user.noob_or_master})
+                      welcome, <i>{user.username}</i> ({user.noob_or_master})
                     </Typography>
                   </Box>
                 </Box>

@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import CancelIcon from '@mui/icons-material/Cancel';
+import DeleteIcon from '@mui/icons-material/Delete';
 // FOR THE NOOB
 function RequestItem({ request }) {
 
@@ -22,24 +24,32 @@ function RequestItem({ request }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={request.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{request.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {request.master_username} (master)
+                            <Box display="flex" alignItems="center">
+                                <Box>
+                                    <Box sx={{ marginBottom: "2px" }}>
+                                        <b>{request.master_username}</b> (master)
+                                    </Box>
+                                    <Box>
+                                        {request.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
+
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
                             <Box sx={{ marginRight: "10px" }}>
-                                {request.status}
+                                <b>
+                                    {request.status}
+                                </b>
                             </Box>
                             <Box>
                                 <Button
-                                    size='small'
+                                    startIcon={<CancelIcon />}
+                                    color="error"
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
@@ -73,31 +83,38 @@ function RequestItem({ request }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={request.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{request.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {request.master_username} (master)
+                            <Box display="flex" alignItems="center">
+                                <Box>
+                                    <Box sx={{ marginBottom: "2px" }}>
+                                        <b>{request.master_username}</b> (master)
+                                    </Box>
+                                    <Box>
+                                        {request.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
+
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
                             <Box sx={{ marginRight: "10px" }}>
-                                {request.status}
+                                <b>
+                                    {request.status}
+                                </b>
                             </Box>
                             <Box>
                                 <Button
-                                    size='small'
+                                    startIcon={<DeleteIcon />}
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
                                             type: 'DELETE_CONNECTION',
                                             payload: request.id
                                         })
-                                    }}>delete</Button>
+                                    }}>remove</Button>
                             </Box>
                         </Box>
                     </Box>
@@ -118,25 +135,30 @@ function RequestItem({ request }) {
                                 boxShadow: 5
                             }}
                         >
-                            <Box>
-                                <Box>
+                            <Box display="flex">
+                                <Box marginRight="10px">
                                     <img className="requestInvite_logo" src={request.connections_logo} />
                                 </Box>
-                                <Box>
-                                    <b>{request.connections_game_title}</b>
-                                </Box>
-                                <Box>
-                                    {request.master_username} (master)
+                                <Box display="flex" alignItems="center">
+                                    <Box>
+                                        <Box sx={{ marginBottom: "2px" }}>
+                                            <b>{request.master_username}</b> (master)
+                                        </Box>
+                                        <Box>
+                                            {request.connections_game_title}
+                                        </Box>
+                                    </Box>
                                 </Box>
                             </Box>
-                            <Box display="flex" alignItems="center"> phone: {request.phone} </Box>
+
                             <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
-                                <Box sx={{ marginRight: "10px" }}>
-                                    {request.status}
+                                <Box marginRight="400px" display="flex" alignItems="center">
+                                    <b>
+                                        call to connect! {request.phone}
+                                    </b>
                                 </Box>
                                 <Box>
                                     <Button
-                                        size='small'
                                         variant='contained'
                                         onClick={() => {
                                             dispatch({
@@ -168,32 +190,37 @@ function RequestItem({ request }) {
                                 boxShadow: 5
                             }}
                         >
-                            <Box>
-                                <Box>
+                            <Box display="flex">
+                                <Box marginRight="10px">
                                     <img className="requestInvite_logo" src={request.connections_logo} />
                                 </Box>
-                                <Box>
-                                    <b>{request.connections_game_title}</b>
-                                </Box>
-                                <Box>
-                                    {request.master_username} (master)
+                                <Box display="flex" alignItems="center">
+                                    <Box>
+                                        <Box sx={{ marginBottom: "2px" }}>
+                                            <b>{request.master_username}</b> (master)
+                                        </Box>
+                                        <Box>
+                                            {request.connections_game_title}
+                                        </Box>
+                                    </Box>
                                 </Box>
                             </Box>
-                            <Box display="flex" alignItems="center"> phone: {request.phone} </Box>
+
                             <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
-                                <Box sx={{ marginRight: "10px" }}>
-                                    {request.status}
+                                <Box marginRight="400px" display="flex" alignItems="center">
+                                    <b>
+                                        call to connect! {request.phone}
+                                    </b>
                                 </Box>
                                 <Box>
                                     <Button
-                                        size='small'
                                         variant='contained'
                                         onClick={() => {
                                             dispatch({
                                                 type: 'DELETE_CONNECTION',
                                                 payload: request.id
                                             })
-                                        }}>delete</Button>
+                                        }}>clear</Button>
                                 </Box>
                             </Box>
                         </Box>

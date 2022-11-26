@@ -115,8 +115,34 @@ img.games_logo {
   height: 25px;
 }
 
-img.requestInvite_logo {
+img.request_logo {
   height: 50px;
+}
+
+img.requestInvite_logo {
+  height: 90px;
+}
+
+.image {
+  position: relative;
+  height: 100vh;
+  margin: 20px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+}
+
+.content span.text-content {
+  color: #fff;
+  font-size: 8rem;
+  border: #fff solid 12px;
+  padding: 20px;
 }
 
 /* * {

@@ -106,7 +106,8 @@ const Map = () => {
         <Box
             sx={{
                 margin: "50px",
-                border: "#1976d2 solid 10px",
+                // border: "#1976d2 solid 10px",
+                border: "solid 10px",
                 borderRadius: "4px"
             }}
         >
@@ -153,14 +154,14 @@ const Map = () => {
                                             marginRight: "10px"
                                         }}
                                         >
-                                            <img className="games_logo" src={selected.games_logo} />
+                                            <img className="request_logo" src={selected.games_logo} />
                                         </Box>
                                         <Box>
                                             <Box>
-                                                {selected.username} ({selected.noob_or_master})
+                                                <b>{selected.username}</b> ({selected.noob_or_master})
                                             </Box>
                                             <Box>
-                                                Game Title: <b>{selected.title}</b>
+                                                game: {selected.title}
                                             </Box>
                                         </Box>
 
@@ -174,7 +175,7 @@ const Map = () => {
                                             value={newMessage}
                                             onChange={(event) => setNewMessage(event.target.value)}
                                             id="outlined-basic"
-                                            label="type message"
+                                            label="message"
                                             variant="outlined"
                                         />
                                         <Box textAlign={'right'}>

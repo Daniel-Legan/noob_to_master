@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 // import { Parallax } from 'react-scroll-parallax';
-import { Parallax } from 'react-parallax';
+import { Parallax } from 'react-parallax'
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';;
 import './LandingPage.css';
-import gamers from '../images/gamers.jpg'
+import gamers from '../Images/gamers.jpg'
 
 // CUSTOM COMPONENTS
 
 function LandingPage() {
 
   return (
-    <>
-          <div>
-            <Parallax strength={800} bgImage={gamers}>
-              <div className='content'>
-                <div className='text-content'>
-                  Normal Parallax
-                </div>
-              </div>
-            </Parallax>
+    <Box>
+      <div>
+        <Parallax className="image" strength={600} bgImage={gamers}>
+          <div className='content'>
+            <span className='text-content'>
+              noob to master
+            </span>
           </div>
-    </>
+        </Parallax>
+      </div>
+    </Box>
   );
 }
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 // FOR THE MASTER
 function InviteItem({ invite }) {
 
@@ -22,22 +24,29 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{invite.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {invite.noob_username} (noob)
+                            <Box display="flex" alignItems="center">
+                                <Box sx={{ marginBottom: "2px" }}>
+                                    <Box>
+                                        <b>{invite.noob_username}</b> (noob)
+                                    </Box>
+                                    <Box>
+                                        {invite.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
-                        <Box display="flex" alignItems="center" sx={{ marginRight: "10px" }}>"{invite.noob_message}"</Box>
+
+                        <Box display="flex" alignItems="center" sx={{ marginRight: "10px" }}><b>"{invite.noob_message}"</b></Box>
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
                             <Box>
                                 <Button
                                     size='small'
+                                    color='success'
+                                    startIcon={<ThumbUpIcon/>}
                                     variant='contained'
                                     sx={{ marginRight: "10px" }}
                                     onClick={() => {
@@ -53,6 +62,8 @@ function InviteItem({ invite }) {
                             <Box>
                                 <Button
                                     size='small'
+                                    color='error'
+                                    startIcon={<ThumbDownIcon/>}
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
@@ -82,32 +93,33 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{invite.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {invite.noob_username} (noob)
+                            <Box display="flex" alignItems="center">
+                                <Box sx={{ marginBottom: "2px" }}>
+                                    <Box>
+                                        <b>{invite.noob_username}</b> (noob)
+                                    </Box>
+                                    <Box>
+                                        {invite.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
-                        <Box display="flex" alignItems="center" sx={{ marginRight: "10px" }}>"{invite.noob_message}"</Box>
+
+                        <Box display="flex" alignItems="center" sx={{ marginRight: "10px" }}><b>"{invite.noob_message}"</b></Box>
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
-                            <Box sx={{ marginRight: "10px" }}>
-                                {invite.status}
-                            </Box>
                             <Box>
                                 <Button
-                                    size='small'
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
                                             type: 'DELETE_CONNECTION',
                                             payload: invite.id
                                         })
-                                    }}>delete</Button>
+                                    }}>clear</Button>
                             </Box>
                         </Box>
                     </Box>
@@ -131,27 +143,30 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{invite.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {invite.noob_username} (noob)
+                            <Box display="flex" alignItems="center">
+                                <Box sx={{ marginBottom: "2px" }}>
+                                    <Box>
+                                        <b>{invite.noob_username}</b> (noob)
+                                    </Box>
+                                    <Box>
+                                        {invite.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
 
                         <Box sx={{ display: "flex", flexDirection: 'column', alignItems: "center", justifyContent: "center" }}>
-                            <Box>"{invite.noob_message}"</Box>
-                            <Box>phone: {invite.phone}</Box>
+                            <Box sx={{marginBottom: "2px"}}><b>"{invite.noob_message}"</b></Box>
+                            <Box><b>call to connect! {invite.phone}</b></Box>
                         </Box>
 
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
                             <Box>
                                 <Button
-                                    size='small'
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
@@ -185,34 +200,37 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{invite.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {invite.noob_username} (noob)
+                            <Box display="flex" alignItems="center">
+                                <Box sx={{ marginBottom: "2px" }}>
+                                    <Box>
+                                        <b>{invite.noob_username}</b> (noob)
+                                    </Box>
+                                    <Box>
+                                        {invite.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
 
                         <Box sx={{ display: "flex", flexDirection: 'column', alignItems: "center", justifyContent: "center" }}>
-                            <Box>"{invite.noob_message}"</Box>
-                            <Box>phone: {invite.phone}</Box>
+                            <Box sx={{ marginBottom: "2px" }}><b>"{invite.noob_message}"</b></Box>
+                            <Box><b>call to connect! {invite.phone}</b></Box>
                         </Box>
 
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
                             <Box>
                                 <Button
-                                    size='small'
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
                                             type: 'DELETE_CONNECTION',
                                             payload: invite.id
                                         })
-                                    }}>delete</Button>
+                                    }}>clear</Button>
                             </Box>
                         </Box>
                     </Box>
