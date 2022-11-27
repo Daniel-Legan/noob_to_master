@@ -110,7 +110,7 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
- 
+
 img.games_logo {
   height: 25px;
 }
@@ -145,6 +145,13 @@ img.requestInvite_logo {
   padding: 20px;
 }
 
+.centerText {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* * {
-  border: black solid 2px;
+  border: rgb(0, 0, 0) solid 2px;
 } */

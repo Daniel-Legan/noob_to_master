@@ -16,6 +16,7 @@ function InviteItem({ invite }) {
                     <Box
                         display="flex"
                         justifyContent="space-between"
+                        position="relative"
                         sx={{
                             margin: "20px",
                             background: "#e8e8e8",
@@ -24,6 +25,8 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
+                        <Box width="350px" className='centerText'><b>"{invite.noob_message}"</b></Box>
+
                         <Box display="flex">
                             <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
@@ -40,13 +43,13 @@ function InviteItem({ invite }) {
                             </Box>
                         </Box>
 
-                        <Box display="flex" alignItems="center" sx={{ marginRight: "10px" }}><b>"{invite.noob_message}"</b></Box>
+
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
                             <Box>
                                 <Button
                                     size='small'
                                     color='success'
-                                    startIcon={<ThumbUpIcon/>}
+                                    startIcon={<ThumbUpIcon />}
                                     variant='contained'
                                     sx={{ marginRight: "10px" }}
                                     onClick={() => {
@@ -63,7 +66,7 @@ function InviteItem({ invite }) {
                                 <Button
                                     size='small'
                                     color='error'
-                                    startIcon={<ThumbDownIcon/>}
+                                    startIcon={<ThumbDownIcon />}
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
@@ -85,6 +88,7 @@ function InviteItem({ invite }) {
                     <Box
                         display="flex"
                         justifyContent="space-between"
+                        position="relative"
                         sx={{
                             margin: "20px",
                             background: "#e8e8e8",
@@ -93,6 +97,8 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
+                        <Box width="350px" className='centerText'><b>"{invite.noob_message}"</b></Box>
+
                         <Box display="flex">
                             <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
@@ -109,7 +115,6 @@ function InviteItem({ invite }) {
                             </Box>
                         </Box>
 
-                        <Box display="flex" alignItems="center" sx={{ marginRight: "10px" }}><b>"{invite.noob_message}"</b></Box>
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
                             <Box>
                                 <Button
@@ -135,6 +140,7 @@ function InviteItem({ invite }) {
                     <Box
                         display="flex"
                         justifyContent="space-between"
+                        position="relative"
                         sx={{
                             margin: "20px",
                             background: "#e8e8e8",
@@ -143,6 +149,7 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
+                        <Box width="350px" className='centerText'><b>"{invite.noob_message}"</b></Box>
                         <Box display="flex">
                             <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
@@ -155,13 +162,13 @@ function InviteItem({ invite }) {
                                     <Box>
                                         {invite.connections_game_title}
                                     </Box>
+                                    <Box alignItems="center" sx={{ background: "#ab47bc", color: "white", padding: "5px", borderRadius: "4px" }}>
+                                        <b>
+                                            connect! {invite.phone}
+                                        </b>
+                                    </Box>
                                 </Box>
                             </Box>
-                        </Box>
-
-                        <Box sx={{ display: "flex", flexDirection: 'column', alignItems: "center", justifyContent: "center" }}>
-                            <Box sx={{marginBottom: "2px"}}><b>"{invite.noob_message}"</b></Box>
-                            <Box><b>call to connect! {invite.phone}</b></Box>
                         </Box>
 
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
@@ -192,6 +199,7 @@ function InviteItem({ invite }) {
                     <Box
                         display="flex"
                         justifyContent="space-between"
+                        position="relative"
                         sx={{
                             margin: "20px",
                             background: "#e8e8e8",
@@ -200,6 +208,8 @@ function InviteItem({ invite }) {
                             boxShadow: 5
                         }}
                     >
+                        <Box width="350px" className='centerText'><b>"{invite.noob_message}"</b></Box>
+
                         <Box display="flex">
                             <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={invite.connections_logo} />
@@ -212,13 +222,13 @@ function InviteItem({ invite }) {
                                     <Box>
                                         {invite.connections_game_title}
                                     </Box>
+                                    <Box alignItems="center" sx={{ background: "#ab47bc", color: "white", padding: "5px", borderRadius: "4px" }}>
+                                        <b>
+                                            connect! {invite.phone}
+                                        </b>
+                                    </Box>
                                 </Box>
                             </Box>
-                        </Box>
-
-                        <Box sx={{ display: "flex", flexDirection: 'column', alignItems: "center", justifyContent: "center" }}>
-                            <Box sx={{ marginBottom: "2px" }}><b>"{invite.noob_message}"</b></Box>
-                            <Box><b>call to connect! {invite.phone}</b></Box>
                         </Box>
 
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
