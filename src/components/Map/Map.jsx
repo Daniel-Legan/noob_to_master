@@ -68,7 +68,7 @@ const Map = () => {
 
         Swal.fire(
             'Success!',
-            `your message was sent to ${selected.username}`,
+            `Your message was sent to <b>${selected.username}.</b>`,
             'success'
         )
 

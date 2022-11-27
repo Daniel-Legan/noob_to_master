@@ -5,13 +5,9 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: "Roboto", sans-serif;
   margin: 0px;
-}
-
-img {
-  display: inline-block;
-  max-width: 100%;
 }
 
 /* --------------------------------------------------------------------------------
@@ -26,55 +22,6 @@ Container
 Button
 -------------------------------------------------------------------------------- */
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
-.btn:hover {
-  background-color: #008183;
-  text-decoration: none;
-}
-
-/* This line makes the "Register" and "Login" buttons look like links */
-.btn_asLink {
-  padding: 0;
-  border-width: 0;
-  border-bottom: 1px solid #444;
-  border-radius: 0;
-  background: none;
-  font: inherit;
-  color: #444;
-}
-
-.btn_asLink:hover {
-  background-color: transparent;
-  border-color: #008183;
-  color: #008183;
-}
 
 /* --------------------------------------------------------------------------------
 Alert
@@ -95,16 +42,6 @@ Alert
 Form Treatment
 -------------------------------------------------------------------------------- */
 
-.formPanel {
-  box-sizing: border-box;
-  width: 400px;
-  max-width: 100%;
-  padding: 25px;
-  margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
-}
 
 input {
   margin: 5px;
@@ -123,9 +60,18 @@ img.requestInvite_logo {
   height: 90px;
 }
 
+.centerText {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* parallax */
+
 .image {
   position: relative;
-  height: 100vh;
+  height: 80vh;
   margin: 20px;
 }
 
@@ -134,7 +80,7 @@ img.requestInvite_logo {
   align-items: center;
   justify-content: center;
   position: absolute;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
 }
 
@@ -142,15 +88,10 @@ img.requestInvite_logo {
   color: #fff;
   font-size: 8rem;
   border: #fff solid 12px;
+  border-radius: 10px;
   padding: 20px;
 }
 
-.centerText {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* * {
   border: rgb(0, 0, 0) solid 2px;
