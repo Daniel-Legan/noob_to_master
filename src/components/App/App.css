@@ -6,7 +6,6 @@ body,
 
 body {
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-  font-family: "Roboto", sans-serif;
   margin: 0px;
 }
 
@@ -92,7 +91,24 @@ img.requestInvite_logo {
   padding: 20px;
 }
 
+#main {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* background-image: linear-gradient(to bottom,rgb(0,0,0,0),rgb(0, 0, 0, 0.15)); */
+}
+
+#landingCard {
+  background-color: rgb(255, 244, 206);
+}
+
+* {
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: "Roboto", sans-serif;
+}
 
 /* * {
+  font-family: "Roboto", sans-serif;
   border: rgb(0, 0, 0) solid 2px;
 } */

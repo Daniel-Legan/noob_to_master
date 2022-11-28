@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import TextField from '@mui/material/TextField';
-
-// npm i @react-google-maps/api
 
 const Map = () => {
     const dispatch = useDispatch();
@@ -171,7 +169,7 @@ const Map = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            sx={{margin: "10px 0px"}}
+                                            sx={{ margin: "10px 0px" }}
                                             value={newMessage}
                                             onChange={(event) => setNewMessage(event.target.value)}
                                             id="outlined-basic"

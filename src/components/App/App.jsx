@@ -14,7 +14,6 @@ import LandingPage from '../LandingPage/LandingPage';
 import Map from '../Map/Map';
 import RequestsPage from '../RequestsPage/RequestsPage';
 import InvitesPage from '../InvitesPage/InvitesPage';
-import { ParallaxProvider } from 'react-scroll-parallax';
 
 import './App.css';
 
@@ -27,63 +26,61 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div id="main">
+        <Nav />
+        <Switch>
 
-          <Nav />
-          <Switch>
+          <Redirect exact from="/" to="/home" />
 
-            <Redirect exact from="/" to="/home" />
+          <Route
+            exact
+            path="/about"
+          >
+            <AboutPage />
+          </Route>
 
-            <Route
-              exact
-              path="/about"
-            >
-              <AboutPage />
-            </Route>
-
-            {/* For protected routes, the view could show one of several things on the same route.
+          {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
 
-            <ProtectedRoute
+          <ProtectedRoute
 
-              exact
-              path="/map"
-            >
-              <Map />
-            </ProtectedRoute>
+            exact
+            path="/map"
+          >
+            <Map />
+          </ProtectedRoute>
 
-            <ProtectedRoute
+          <ProtectedRoute
 
-              exact
-              path="/requests"
-            >
-              <RequestsPage />
-            </ProtectedRoute>
+            exact
+            path="/requests"
+          >
+            <RequestsPage />
+          </ProtectedRoute>
 
-            <ProtectedRoute
+          <ProtectedRoute
 
-              exact
-              path="/invites"
-            >
-              <InvitesPage />
-            </ProtectedRoute>
+            exact
+            path="/invites"
+          >
+            <InvitesPage />
+          </ProtectedRoute>
 
-            <Route
-              exact
-              path="/home"
-            >
-              <LandingPage />
-            </Route>
+          <Route
+            exact
+            path="/home"
+          >
+            <LandingPage />
+          </Route>
 
-            {/* If none of the other routes matched, we will show a 404. */}
-            <Route>
-              <h1>404</h1>
-            </Route>
-          </Switch>
-          <Footer />
-
+          {/* If none of the other routes matched, we will show a 404. */}
+          <Route>
+            <h1>404</h1>
+          </Route>
+        </Switch>
+        <Footer />
       </div>
     </Router>
   );

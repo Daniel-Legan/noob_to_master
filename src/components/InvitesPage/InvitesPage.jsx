@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InviteItem from '../InviteItem/InviteItem';
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
+
 // FOR THE MASTER
 function InvitesPage() {
     const dispatch = useDispatch();
