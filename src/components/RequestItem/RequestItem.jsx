@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import CancelIcon from '@mui/icons-material/Cancel';
 // FOR THE NOOB
 function RequestItem({ request }) {
 
@@ -14,6 +15,7 @@ function RequestItem({ request }) {
                     <Box
                         display="flex"
                         justifyContent="space-between"
+                        position="relative"
                         sx={{
                             margin: "20px",
                             background: "#e8e8e8",
@@ -22,24 +24,34 @@ function RequestItem({ request }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box className='centerText'>
+                            <b>
+                                {request.status}
+                            </b>
+                        </Box>
+
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={request.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{request.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {request.master_username} (master)
+                            <Box display="flex" alignItems="center">
+                                <Box>
+                                    <Box sx={{ marginBottom: "2px" }}>
+                                        <b>{request.master_username}</b> (master)
+                                    </Box>
+                                    <Box>
+                                        {request.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
+
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
-                            <Box sx={{ marginRight: "10px" }}>
-                                {request.status}
-                            </Box>
+
                             <Box>
                                 <Button
-                                    size='small'
+                                    startIcon={<CancelIcon />}
+                                    color="error"
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
@@ -65,6 +77,7 @@ function RequestItem({ request }) {
                     <Box
                         display="flex"
                         justifyContent="space-between"
+                        position="relative"
                         sx={{
                             margin: "20px",
                             background: "#e8e8e8",
@@ -73,31 +86,38 @@ function RequestItem({ request }) {
                             boxShadow: 5
                         }}
                     >
-                        <Box>
-                            <Box>
+                        <Box className='centerText'>
+                            <b>
+                                {request.status}
+                            </b>
+                        </Box>
+
+                        <Box display="flex">
+                            <Box marginRight="10px">
                                 <img className="requestInvite_logo" src={request.connections_logo} />
                             </Box>
-                            <Box>
-                                <b>{request.connections_game_title}</b>
-                            </Box>
-                            <Box>
-                                {request.master_username} (master)
+                            <Box display="flex" alignItems="center">
+                                <Box>
+                                    <Box sx={{ marginBottom: "2px" }}>
+                                        <b>{request.master_username}</b> (master)
+                                    </Box>
+                                    <Box>
+                                        {request.connections_game_title}
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
+
                         <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
-                            <Box sx={{ marginRight: "10px" }}>
-                                {request.status}
-                            </Box>
                             <Box>
                                 <Button
-                                    size='small'
                                     variant='contained'
                                     onClick={() => {
                                         dispatch({
                                             type: 'DELETE_CONNECTION',
                                             payload: request.id
                                         })
-                                    }}>delete</Button>
+                                    }}>clear</Button>
                             </Box>
                         </Box>
                     </Box>
@@ -106,98 +126,109 @@ function RequestItem({ request }) {
         case 'accepted':
             return (
                 <Box>
-                    <Box>
-                        <Box
-                            display="flex"
-                            justifyContent="space-between"
-                            sx={{
-                                margin: "20px",
-                                background: "#e8e8e8",
-                                borderRadius: "4px",
-                                padding: "20px",
-                                boxShadow: 5
-                            }}
-                        >
-                            <Box>
-                                <Box>
-                                    <img className="requestInvite_logo" src={request.connections_logo} />
-                                </Box>
-                                <Box>
-                                    <b>{request.connections_game_title}</b>
-                                </Box>
-                                <Box>
-                                    {request.master_username} (master)
-                                </Box>
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        position="relative"
+                        sx={{
+                            margin: "20px",
+                            background: "#e8e8e8",
+                            borderRadius: "4px",
+                            padding: "20px",
+                            boxShadow: 5
+                        }}
+                    >
+                        <Box display="flex">
+                            <Box marginRight="10px">
+                                <img className="requestInvite_logo" src={request.connections_logo} />
                             </Box>
-                            <Box display="flex" alignItems="center"> phone: {request.phone} </Box>
-                            <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
-                                <Box sx={{ marginRight: "10px" }}>
-                                    {request.status}
-                                </Box>
+                            <Box display="flex" alignItems="center">
                                 <Box>
-                                    <Button
-                                        size='small'
-                                        variant='contained'
-                                        onClick={() => {
-                                            dispatch({
-                                                type: 'UPDATE_STATUS',
-                                                payload: {
-                                                    id: request.id,
-                                                    newStatus: 'noob_cleared'
-                                                }
-                                            })
-                                        }}>clear</Button>
+                                    <Box sx={{ marginBottom: "2px" }}>
+                                        <b>{request.master_username}</b> (master)
+                                    </Box>
+                                    <Box>
+                                        {request.connections_game_title}
+                                    </Box>
+                                    <Box alignItems="center" sx={{ background: "#ab47bc", color: "white", padding: "5px", borderRadius: "4px" }}>
+                                        <b>
+                                            connect! {request.phone}
+                                        </b>
+                                    </Box>
                                 </Box>
                             </Box>
                         </Box>
+
+                        <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
+                            <Box>
+                                <Button
+                                    variant='contained'
+                                    onClick={() => {
+                                        dispatch({
+                                            type: 'UPDATE_STATUS',
+                                            payload: {
+                                                id: request.id,
+                                                newStatus: 'noob_cleared'
+                                            }
+                                        })
+                                    }}>clear</Button>
+                            </Box>
+                        </Box>
+
+
                     </Box>
                 </Box>
             );
         case 'master_cleared':
             return (
                 <Box>
-                    <Box>
-                        <Box
-                            display="flex"
-                            justifyContent="space-between"
-                            sx={{
-                                margin: "20px",
-                                background: "#e8e8e8",
-                                borderRadius: "4px",
-                                padding: "20px",
-                                boxShadow: 5
-                            }}
-                        >
-                            <Box>
-                                <Box>
-                                    <img className="requestInvite_logo" src={request.connections_logo} />
-                                </Box>
-                                <Box>
-                                    <b>{request.connections_game_title}</b>
-                                </Box>
-                                <Box>
-                                    {request.master_username} (master)
-                                </Box>
+
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        sx={{
+                            margin: "20px",
+                            background: "#e8e8e8",
+                            borderRadius: "4px",
+                            padding: "20px",
+                            boxShadow: 5
+                        }}
+                    >
+                        <Box display="flex">
+                            <Box marginRight="10px">
+                                <img className="requestInvite_logo" src={request.connections_logo} />
                             </Box>
-                            <Box display="flex" alignItems="center"> phone: {request.phone} </Box>
-                            <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
-                                <Box sx={{ marginRight: "10px" }}>
-                                    {request.status}
-                                </Box>
+                            <Box display="flex" alignItems="center">
                                 <Box>
-                                    <Button
-                                        size='small'
-                                        variant='contained'
-                                        onClick={() => {
-                                            dispatch({
-                                                type: 'DELETE_CONNECTION',
-                                                payload: request.id
-                                            })
-                                        }}>delete</Button>
+                                    <Box sx={{ marginBottom: "2px" }}>
+                                        <b>{request.master_username}</b> (master)
+                                    </Box>
+                                    <Box>
+                                        {request.connections_game_title}
+                                    </Box>
+                                    <Box alignItems="center" sx={{ background: "#ab47bc", color: "white", padding: "5px", borderRadius: "4px" }}>
+                                        <b>
+                                            connect! {request.phone}
+                                        </b>
+                                    </Box>
                                 </Box>
                             </Box>
                         </Box>
+
+                        <Box display="flex" alignItems="center" sx={{ padding: "10px" }}>
+                            <Box>
+                                <Button
+                                    variant='contained'
+                                    onClick={() => {
+                                        dispatch({
+                                            type: 'DELETE_CONNECTION',
+                                            payload: request.id
+                                        })
+                                    }}>clear</Button>
+                            </Box>
+                        </Box>
                     </Box>
+
                 </Box>
             );
         case 'noob_cleared':

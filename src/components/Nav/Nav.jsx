@@ -1,7 +1,6 @@
 
 import Drawer from '@mui/material/Drawer';
 import { useState } from 'react';
-import './Nav.css';
 import { useSelector } from 'react-redux';
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -70,6 +69,7 @@ function Nav() {
     <Box>
       {user.noob_or_master === 'noob' &&
         <Drawer
+          position="relative"
           anchor='left'
           open={isDrawerOpen}
           // called when clicking outside the drawer
@@ -88,11 +88,12 @@ function Nav() {
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
             about
           </Button>
-          <Button sx={{ color: 'white' }} onClick={handleOnClick}>logout</Button>
+          <Button sx={{ color: 'white', position: "absolute", width: "100%", bottom: 0 }} onClick={handleOnClick}>logout</Button>
         </Drawer>}
 
       {user.noob_or_master === 'master' &&
         <Drawer
+          position="relative"
           anchor='left'
           open={isDrawerOpen}
           // called when clicking outside the drawer
@@ -105,17 +106,18 @@ function Nav() {
             DASHBOARD
           </Typography>
           <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false) }}>home</Button>
-          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false); setOpen(true)}}>game and role</Button>
+          <Button sx={buttonStyles} onClick={() => { history.push('/home'); setIsDrawerOpen(false); setOpen(true) }}>game and role</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/invites'); setIsDrawerOpen(false) }}>invites</Button>
           <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
             about
           </Button>
-          <Button sx={buttonStyles} onClick={handleOnClick}>logout</Button>
+          <Button sx={{ color: 'white', position: "absolute", width: "100%", bottom: 0 }} onClick={handleOnClick}>logout</Button>
         </Drawer>}
 
       {!user.id && (
         <>
           <Drawer
+            position="relative"
             anchor='left'
             open={isDrawerOpen}
             // called when clicking outside the drawer
@@ -131,9 +133,7 @@ function Nav() {
             <Button sx={buttonStyles} onClick={() => { history.push('/about'); setIsDrawerOpen(false) }}>
               about
             </Button>
-            <Button sx={buttonStyles} onClick={handleOpenLogin}>
-              login
-            </Button>
+            <Button sx={{ color: 'white', position: "absolute", width: "100%", bottom: 0 }} onClick={handleOpenLogin}>login</Button>
 
           </Drawer>
         </>
@@ -191,7 +191,7 @@ function Nav() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Noob-to-Master
+              noob to master
             </Typography>
             <Box>
               {user.id && (
@@ -201,7 +201,7 @@ function Nav() {
                   </Box>
                   <Box>
                     <Typography>
-                      hello, <i>{user.username}</i> ({user.noob_or_master})
+                      welcome, <i>{user.username}</i> ({user.noob_or_master})
                     </Typography>
                   </Box>
                 </Box>

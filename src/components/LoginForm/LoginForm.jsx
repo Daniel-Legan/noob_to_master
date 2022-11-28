@@ -15,7 +15,6 @@ function LoginForm({ handleCloseLogin, setIsDrawerOpen }) {
   const errors = useSelector(store => store.errors);
 
   const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
 

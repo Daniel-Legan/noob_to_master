@@ -6,8 +6,6 @@ import PlacesAutoComplete, {
 import { useDispatch } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 
 export default function AutoComplete() {
     const dispatch = useDispatch();
@@ -35,7 +33,7 @@ export default function AutoComplete() {
                 onSelect={handleSelect}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                    <Box sx={{margin: '10px 0px'}}>
+                    <Box sx={{ margin: '10px 0px' }}>
                         <TextField
                             required
                             size='small'
@@ -44,7 +42,6 @@ export default function AutoComplete() {
                             variant="standard"
                             {...getInputProps()}
                         />
-                        {/* <input required {...getInputProps({ placeholder: "type address" })} /> */}
                         <Box
                             position={"absolute"}
                             zIndex={1}
