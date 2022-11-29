@@ -1,4 +1,10 @@
 -- Database Name: noob_to_master
+CREATE TABLE "games" (
+	"id" serial PRIMARY KEY,
+	"title" VARCHAR(255) NOT NULL,
+	"logo" VARCHAR(255) NOT NULL
+	);
+
 CREATE TABLE "users" (
 	"id" serial PRIMARY KEY,
 	"username" VARCHAR (80) UNIQUE NOT NULL,
@@ -9,12 +15,6 @@ CREATE TABLE "users" (
 	"lng" DECIMAL(10, 7) NOT NULL,
 	"game_id" int NOT NULL REFERENCES games,
 	"noob_or_master" varchar(6) NOT NULL
-	);
-	
-CREATE TABLE "games" (
-	"id" serial PRIMARY KEY,
-	"title" VARCHAR(255) NOT NULL,
-	"logo" VARCHAR(255) NOT NULL
 	);
 	
 CREATE TABLE "connections" (
