@@ -1,6 +1,6 @@
 # noob to master
 
-As our world becomes more digital, gamers too can have difficulty connecting with one another. That's why I created **noob to master**. With **noob to maste**, users can connect with one another and establish a local connection. By bringing users together, **noob to master** promotes in-person interactions accelerating growth for both parties. 
+As our world becomes more digital, gamers too can have difficulty connecting with one another. That's why I created **noob to master**. With **noob to master**, users can connect with one another and establish a local connection. By bringing users together, the application promotes in-person interactions accelerating growth for both parties. 
 
 ## Approach
 *Duration: Two Week Sprint*
@@ -32,7 +32,7 @@ I created a [wire-frame](https://www.figma.com/file/x2PLvrnopEzxTwrgSk1RIu/Noob-
 
 ## Technologies/Languages
 
-JavaScript, React, Redux/Saga, Node, Express, PostgreSQL, HTML5, CSS3, Axios, Passport, Material-UI, Git, GitHub, [React Scroll Parallax](https://www.npmjs.com/package/react-scroll-parallax), [sweetalert2](https://sweetalert2.github.io/), [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview), [Google Places API](https://developers.google.com/maps/documentation/javascript/place-autocomplete).
+JavaScript, React, Redux/Saga, Node, Express, PostgreSQL, HTML5, CSS3, Axios, Passport, Material-UI, Git, GitHub, [sweetalert2](https://sweetalert2.github.io/), [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview), [Google Places API](https://developers.google.com/maps/documentation/javascript/place-autocomplete).
 
 ## Future Plans
 I originally wanted to have a rating system to so that noobs would have more confidence in who they contact from the map view. I also wanted to have the ability to upload a profile picture to help personalize their profile. I also wanted to have a live chat messaging system. However, two weeks was not enough time to build these features into the application while still producing a polished product. Finding appropriate examples for the API's that would work in the application and establishing connection between different user types was more important for the concept the application provides. 
