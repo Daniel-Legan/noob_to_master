@@ -6,7 +6,6 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    // console.log(req.user.id);
     // return invites
     const queryText = `
                         SELECT 

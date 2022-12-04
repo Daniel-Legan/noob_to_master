@@ -26,3 +26,16 @@ CREATE TABLE "connections" (
 	"game_logo" VARCHAR(255) NOT NULL,
 	"game_title" VARCHAR(255) NOT NULL
 	);
+
+INSERT INTO "games" ("title", "logo")
+VALUES 
+	('Overwatch', 'images/overwatch.png'), 
+	('Modern Warfare 2', 'images/modern_warfare_2.png'), 
+	('Starcraft II', 'images/starcraft_ii.png'), 
+	('Valorant', 'images/valorant.png'), 
+	('Fortnite', 'images/fortnite.png'), 
+	('Counter Strike: Global Offensive', 'images/csgo.png'), 
+	('Rocket League', 'images/rocket_league.png'), 
+	('Dota 2', 'images/dota_2.png'), 
+	('League of Legends', 'iimages/league_of_legends.png'), 
+	('Apex Legends', 'images/apex_legends.png');

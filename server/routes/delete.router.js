@@ -6,7 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    console.log(req.params.id);
+
     const sqlText = `
                     DELETE FROM "connections"
                     WHERE id = $1;
@@ -16,7 +16,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     pool.query(sqlText, sqlParams)
         .then(() => res.sendStatus(200))
         .catch((error) => {
-            console.log('error in delete.router', error)
+            console.log('error in deleting connection', error)
             res.sendStatus(500);
         });
 });
