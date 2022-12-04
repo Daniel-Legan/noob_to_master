@@ -8,9 +8,10 @@ As our world becomes more digital, gamers too can have difficulty connecting wit
 I created a [wire-frame](https://www.figma.com/file/x2PLvrnopEzxTwrgSk1RIu/Noob-to-Master?node-id=0%3A1&t=XAGg2VOoas4L6JDu-0), [ERD](https://app.dbdesigner.net/designer/schema/0-noob-to-master), and [scope documents](https://docs.google.com/document/d/1uNwpy_YTXstxOsEulTE25XW_ykuo1dBPTjAU5g-Kcis/edit) before coding begun. I had a chance to test Google Maps API and Google AutoComplete API prior to building which assured development could continue with success.
 
 ## Demo
-
-
 https://user-images.githubusercontent.com/105569295/205509741-73e5f5ad-e4f4-4bef-952c-80a3c4781092.mp4
+https://user-images.githubusercontent.com/105569295/205509811-599b602f-9648-4d30-b427-b7ae53075a7f.mp4
+https://user-images.githubusercontent.com/105569295/205509858-c1834521-2dfe-449b-81d4-3a432f99b789.mp4
+
 
 
 ## Getting Started
