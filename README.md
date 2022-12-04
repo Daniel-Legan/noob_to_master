@@ -9,6 +9,10 @@ I created a [wire-frame](https://www.figma.com/file/x2PLvrnopEzxTwrgSk1RIu/Noob-
 
 ## Demo
 
+
+https://user-images.githubusercontent.com/105569295/205509741-73e5f5ad-e4f4-4bef-952c-80a3c4781092.mp4
+
+
 ## Getting Started
 
 #### Installation 
