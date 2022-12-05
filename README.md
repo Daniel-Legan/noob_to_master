@@ -8,6 +8,7 @@ As our world becomes more digital, gamers too can have difficulty connecting wit
 I created a [wire-frame](https://www.figma.com/file/x2PLvrnopEzxTwrgSk1RIu/Noob-to-Master?node-id=0%3A1&t=XAGg2VOoas4L6JDu-0), [ERD](https://app.dbdesigner.net/designer/schema/0-noob-to-master), and [scope documents](https://docs.google.com/document/d/1uNwpy_YTXstxOsEulTE25XW_ykuo1dBPTjAU5g-Kcis/edit) before coding begun. I had a chance to test Google Maps API and Google Places API prior to building which assured development could continue with success.
 
 ## Demo
+[Live Presentation](https://youtu.be/LYCxZu8TEHY)
 
 
 https://user-images.githubusercontent.com/105569295/205509741-73e5f5ad-e4f4-4bef-952c-80a3c4781092.mp4
@@ -24,8 +25,6 @@ https://user-images.githubusercontent.com/105569295/205510405-83aa85a0-5986-430c
 
 https://user-images.githubusercontent.com/105569295/205510415-457f1c16-29b1-4677-b397-46a625fcf2ca.mp4
 
-
-[Live Presentation](https://youtu.be/LYCxZu8TEHY)
 
 ## Getting Started
 
