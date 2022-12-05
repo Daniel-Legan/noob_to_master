@@ -25,6 +25,8 @@ https://user-images.githubusercontent.com/105569295/205510405-83aa85a0-5986-430c
 https://user-images.githubusercontent.com/105569295/205510415-457f1c16-29b1-4677-b397-46a625fcf2ca.mp4
 
 
+[Live Presentation](https://youtu.be/LYCxZu8TEHY)
+
 ## Getting Started
 
 #### Installation 
